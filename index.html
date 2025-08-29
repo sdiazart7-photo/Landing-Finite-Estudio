@@ -114,6 +114,11 @@
         .logo-size {
             height: 40px; 
         }
+        /* ===== NUEVA CLASE PARA AJUSTAR EL BOTÓN DE NAVEGACIÓN ===== */
+        .nav-button {
+            padding: 12px 24px;
+            font-size: 14px;
+        }
         .testimonial-content-gap {
             gap: 20px; 
         }
@@ -139,7 +144,12 @@
                 margin: 15px 15px;
             }
             .main-title-font-size {
-                font-size: 30px; /* Reducido para que quepa en dos líneas */
+                font-size: 22px; /* Corregido para que quepa en dos líneas */
+            }
+            /* ===== AJUSTE PARA EL BOTÓN DE NAVEGACIÓN EN CELULAR ===== */
+            .nav-button {
+               padding: 10px 12px; /* Menos espaciado horizontal */
+               font-size: 12px; /* Fuente más pequeña para que quepa el texto */
             }
             .testimonial-image {
                 height: 400px;
@@ -162,9 +172,11 @@
     <header class="fixed top-0 left-0 right-0 z-50 glass-nav-container">
         <div class="bg-brand-white/80 backdrop-blur-lg border border-black/10 shadow-lg rounded-xl">
             <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-20">
+                <!-- MODIFICADO: Se ajustó el layout para que en celular (flex-col) el botón se ponga debajo del logo, y en pantallas medianas o más grandes (md:flex-row) vuelva a su estado horizontal. -->
+                <div class="flex flex-col md:flex-row items-center md:justify-between h-auto md:h-20 py-4 md:py-0">
                     <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1752514553/logo-FE-fondoblanco_c8tlxc.png" alt="Finite Estudio Logo" class="logo-size">
-                    <a href="#agendar-cita-section" class="inline-block bg-brand-brown text-white font-bold tracking-widest py-3 px-8 rounded-md hover:opacity-90 transition-opacity duration-300 text-sm whitespace-nowrap">
+                    <!-- MODIFICADO: Se añade un margen superior en la vista de celular (mt-4) para separar el botón del logo. En pantallas más grandes (md:mt-0), el margen desaparece. -->
+                    <a href="#agendar-cita-section" class="nav-button mt-4 md:mt-0 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap">
                         EMPEZAR A DISEÑAR MI COBERTURA
                     </a>
                 </div>
@@ -179,8 +191,7 @@
                     El problema no es encontrar fotografo. <br> Se trata de <strong>no equivocarte al elegirlo</strong>
                 </h1>
                 <div class="w-full aspect-video rounded-lg shadow-xl mb-12 overflow-hidden">
-                    <iframe src="https://player.cloudinary.com/embed/?cloud_name=drrhn6t1c&public_id=vsl-v4-sub_a2mixs&profile=portada&poster=https%3A%2F%2Fres.cloudinary.com%2Fdrrhn6t1c%2Fimage%2Fupload%2Fv1755894727%2Fboda-l_e-92_vugtow.jpg
-" class="w-full h-full" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
+                    <iframe src="https://player.cloudinary.com/embed/?cloud_name=drrhn6t1c&public_id=vsl-v4-sub_a2mixs&profile=portada&poster=https%3A%2F%2Fres.cloudinary.com%2Fdrrhn6t1c%2Fimage%2Fupload%2Fv1755894727%2Fboda-l_e-92_vugtow.jpg" class="w-full h-full" allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen frameborder="0"></iframe>
                 </div>
                 <p class="text-xl md:text-2xl mb-8">
                     Plan de fotos personalizado a tus necesidades
@@ -270,8 +281,8 @@
 
         <section id="agendar-cita-section" class="bg-brand-black text-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl tracking-wider mb-4 uppercase">TU BODA ES ÚNICA. TU COBERTURA TAMBIÉN DEBERÍA SERLO.</h2>
-                <p class="text-lg mb-12">Reserva tu sesión de diseño de cobertura sin costo y creemos juntos el recuerdo perfecto de tu día.</p>
+                <h2 class="text-4xl md:text-5xl tracking-wider mb-4 uppercase">TU BODA ES UNICA. TU COBERTURA TAMBIEN DEBERIA SERLO.</h2>
+                <p class="text-lg mb-12">Reserva tu sesion de diseño de cobertura sin costo y creemos juntos el recuerdo perfecto de tu dia.</p>
                 <div class="rounded-lg overflow-hidden">
                     <div style="width:100%;height:650px;overflow:scroll" id="my-cal-inline-agendar-cita"></div>
                 </div>
@@ -358,12 +369,5 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
 
 
