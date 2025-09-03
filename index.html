@@ -176,7 +176,8 @@
                 <div class="flex flex-col md:flex-row items-center md:justify-between h-auto md:h-20 py-4 md:py-0">
                     <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1752514553/logo-FE-fondoblanco_c8tlxc.png" alt="Finite Estudio Logo" class="logo-size">
                     <!-- MODIFICADO: Se añade un margen superior en la vista de celular (mt-4) para separar el botón del logo. En pantallas más grandes (md:mt-0), el margen desaparece. -->
-                    <a href="#agendar-cita-section" class="nav-button mt-4 md:mt-0 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap">
+                    <!-- AÑADIDO: id para rastrear el evento de clic -->
+                    <a href="#agendar-cita-section" id="nav-cta-button" class="nav-button mt-4 md:mt-0 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap">
                         EMPEZAR A DISEÑAR MI COBERTURA
                     </a>
                 </div>
@@ -196,7 +197,8 @@
                 <p class="text-xl md:text-2xl mb-8">
                     Plan de fotos personalizado a tus necesidades
                 </p>
-                <a href="#agendar-cita-section" class="inline-block bg-brand-brown text-white font-bold tracking-widest py-4 px-12 rounded-md hover:opacity-90 transition-opacity duration-300">
+                <!-- AÑADIDO: id para rastrear el evento de clic -->
+                <a href="#agendar-cita-section" id="main-cta-button" class="inline-block bg-brand-brown text-white font-bold tracking-widest py-4 px-12 rounded-md hover:opacity-90 transition-opacity duration-300">
                     EMPEZAR A DISEÑAR MI COBERTURA
                 </a>
             </div>
@@ -364,10 +366,34 @@
 
             showSlide(0);
             startCarousel();
+
+            // === CÓDIGO AÑADIDO PARA RASTREAR EVENTOS DEL PÍXEL ===
+            // Se asegura de que la función fbq exista antes de usarla.
+            if (typeof fbq === 'function') {
+                // Rastrea el clic en el botón de la barra de navegación.
+                document.getElementById('nav-cta-button').addEventListener('click', function() {
+                    fbq('track', 'Contact');
+                    console.log('Pixel Event: Contact (Nav)');
+                });
+
+                // Rastrea el clic en el botón principal.
+                document.getElementById('main-cta-button').addEventListener('click', function() {
+                    fbq('track', 'Contact');
+                    console.log('Pixel Event: Contact (Main)');
+                });
+
+                // Rastrea el clic en el botón de WhatsApp.
+                const whatsappButton = document.querySelector('a[href*="api.whatsapp.com"]');
+                if (whatsappButton) {
+                    whatsappButton.addEventListener('click', function() {
+                        fbq('track', 'Contact', { content_name: 'WhatsApp' });
+                         console.log('Pixel Event: Contact (WhatsApp)');
+                    });
+                }
+            }
         });
     </script>
 
 </body>
 </html>
-
 
