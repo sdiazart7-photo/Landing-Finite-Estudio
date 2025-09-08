@@ -165,6 +165,41 @@
         #testimonial-carousel { overflow: hidden; }
         .slides-wrapper { display: flex; transition: transform 0.6s ease-in-out; }
         .testimonial-slide { flex: 0 0 100%; width: 100%; }
+
+        /* ===== NUEVOS ESTILOS PARA EL CARRUSEL HORIZONTAL DE TARJETAS ===== */
+        .horizontal-scroll-container {
+            overflow-x: auto;
+            /* Ocultar barra de scroll en navegadores modernos */
+            scrollbar-width: none;  /* Firefox */
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        }
+        /* Ocultar barra de scroll en Chrome, Safari y Opera */
+        .horizontal-scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* ===== NUEVOS ESTILOS PARA EL WIDGET DE WHATSAPP ===== */
+        #whatsapp-chat-widget {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 100;
+        }
+        #chat-popup {
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            position: absolute;
+            bottom: 80px; /* Posiciona la ventana de chat arriba del botón */
+            right: 0;
+            width: 320px;
+        }
+        #whatsapp-chat-widget.active #chat-popup {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
     </style>
 </head>
 <body class="bg-brand-white text-brand-black">
@@ -204,6 +239,7 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE TESTIMONIOS REINSERTADA -->
         <section id="testimonials" class="bg-brand-black text-brand-white px-4 py-24">
             <div class="max-w-6xl mx-auto">
                 <div id="testimonial-carousel">
@@ -261,22 +297,113 @@
             </div>
         </section>
 
-        <section class="bg-brand-white py-24 px-4">
-            <div class="max-w-5xl mx-auto text-center">
-                <h2 class="text-4xl md:text-5xl tracking-wider mb-6 uppercase">TU PLAN DE FOTOS</h2>
-                <p class="text-lg max-w-2xl mx-auto plan-subtitle-margin">
-                    Esto es lo que puedes incluir en tu plan de fotos
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h3 class="text-xl font-bold mb-2">Horas de cobertura</h3><p class="description-font">Elige de 2hrs hasta 12 hrs de cobertura.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><h3 class="text-xl font-bold mb-2">Fotos</h3><p class="description-font">Desde 80 fotos hasta 600 fotos.<br><span class="text-sm text-gray-600">(La cantidad se define por la cantidad de horas)</span></p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg><h3 class="text-xl font-bold mb-2">Momentos</h3><p class="description-font">Decide que momentos vale la pena tener en fotos.<br><span class="text-sm text-gray-600">(getting ready, first look, etc)</span></p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><h3 class="text-xl font-bold mb-2">Album digital</h3><p class="description-font">Un emotivo video collage con las mejores fotos de tu dia.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg><h3 class="text-xl font-bold mb-2">Escena post creditos</h3><p class="description-font">Entrega sorpresa en el dia de la boda, complice: el novio.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><h3 class="text-xl font-bold mb-2">Sesion Save The Date</h3><p class="description-font">Anuncien su boda con estilo.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg><h3 class="text-xl font-bold mb-2">Videografo</h3><p class="description-font">Un profesional dedicado a capturar tu boda en video.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m-9-5.747h18"></path></svg><h3 class="text-xl font-bold mb-2">Asesoria y planeacion</h3><p class="description-font">Te ayudare a planificar los tiempos y momentos ideales para las fotos.</p></div>
-                    <div class="flex flex-col items-center"><svg class="w-12 h-12 mb-4 text-brand-brown" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg><h3 class="text-xl font-bold mb-2">Segundo fotografo</h3><p class="description-font">Doble cobertura para no perder ningun detalle.</p></div>
+        <!-- SECCIÓN "TU PLAN DE FOTOS" ESTILO APPLE MODIFICADA A CARRUSEL HORIZONTAL -->
+        <section class="bg-brand-white py-24">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center px-4">
+                    <h2 class="text-4xl md:text-5xl tracking-wider mb-6 uppercase">TU PLAN DE FOTOS</h2>
+                    <p class="text-lg max-w-2xl mx-auto plan-subtitle-margin">
+                        Esto es lo que puedes incluir en tu plan de fotos
+                    </p>
+                </div>
+
+                <!-- Contenedor del carrusel horizontal -->
+                <div class="mt-16 relative">
+                    <div class="horizontal-scroll-container pl-4 sm:pl-6 lg:pl-8">
+                        <div class="flex space-x-6 pr-4 sm:pr-6 lg:pr-8">
+                            
+                            <!-- Tarjeta 1: Horas de cobertura -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Horas de cobertura</h3>
+                                    <p class="description-font text-gray-600">Elige de 2hrs hasta 12 hrs de cobertura.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 2: Fotos -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Fotos</h3>
+                                    <p class="description-font text-gray-600">Desde 80 fotos hasta 600 fotos.<br><span class="text-sm">(La cantidad se define por la cantidad de horas)</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 3: Momentos -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Momentos</h3>
+                                    <p class="description-font text-gray-600">Decide que momentos vale la pena tener en fotos.<br><span class="text-sm">(getting ready, first look, etc)</span></p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 4: Album digital -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Album digital</h3>
+                                    <p class="description-font text-gray-600">Un emotivo video collage con las mejores fotos de tu dia.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 5: Escena post creditos -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Escena post creditos</h3>
+                                    <p class="description-font text-gray-600">Entrega sorpresa en el dia de la boda, complice: el novio.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 6: Sesion Save The Date -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Sesion Save The Date</h3>
+                                    <p class="description-font text-gray-600">Anuncien su boda con estilo.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 7: Videografo -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Videografo</h3>
+                                    <p class="description-font text-gray-600">Un profesional dedicado a capturar tu boda en video.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 8: Asesoria y planeacion -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v11.494m-9-5.747h18"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Asesoria y planeacion</h3>
+                                    <p class="description-font text-gray-600">Te ayudare a planificar los tiempos y momentos ideales para las fotos.</p>
+                                </div>
+                            </div>
+
+                            <!-- Tarjeta 9: Segundo fotografo -->
+                            <div class="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col justify-between flex-shrink-0 w-80 shadow-lg">
+                                <div>
+                                    <svg class="w-8 h-8 mb-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    <h3 class="text-2xl font-bold mb-3">Segundo fotografo</h3>
+                                    <p class="description-font text-gray-600">Doble cobertura para no perder ningun detalle.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Navigation for Plan de Fotos Carousel -->
+                <div class="flex justify-center items-center mt-8 space-x-4">
+                    <button id="plan-scroll-left" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors disabled:opacity-50">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+                    <button id="plan-scroll-right" class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors disabled:opacity-50">
+                        <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
                 </div>
             </div>
         </section>
@@ -288,12 +415,79 @@
                 <div class="rounded-lg overflow-hidden">
                     <div style="width:100%;height:650px;overflow:scroll" id="my-cal-inline-agendar-cita"></div>
                 </div>
-                <!-- Botón de WhatsApp añadido -->
-                <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola,%20quiero%20agendar%20una%20cita%20pero%20los%20horarios%20que%20tienes%20disponibles%20no%20me%20favorecen,%20como%20la%20podemos%20coordinar?" 
-                   target="_blank" 
-                   class="inline-block mt-8 bg-brand-brown text-white font-bold tracking-widest py-4 px-12 rounded-md hover:opacity-90 transition-opacity duration-300">
-                    LOS HORARIOS NO ME FAVORECEN
-                </a>
+            </div>
+        </section>
+
+        <!-- =============================================================== */
+        /* SECCIÓN DE PREGUNTAS FRECUENTES (FAQ) CORREGIDA */
+        /* =============================================================== */ -->
+        <section class="bg-brand-white py-24 px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl tracking-wider mb-6 uppercase">PREGUNTAS FRECUENTES</h2>
+                </div>
+                <div class="space-y-6">
+                    <!-- Pregunta 1 -->
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Que es una sesion de diseño de cobertura?</h3>
+                            <div class="faq-icon transition-transform duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out mt-4">
+                            <p class="description-font text-gray-700 leading-relaxed pr-8">
+                                Es una charla que tenemos por videollamada o en algun cafeito, totalmente sin costo y sin compromiso. En esta sesion, platicaremos sobre los detalles de tu boda, tus ideas y lo que es mas importante para ustedes. El objetivo es entender tu vision para poder crear un plan de cobertura fotográfica 100% personalizado que se ajuste a tus necesidades y presupuesto, asegurando que cada momento especial quede capturado tal como lo soñaste.
+                                <br><br>
+                                Al final de la sesion tendras una propuesta clara y una cotizacion a la medida.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Pregunta 2 (CORREGIDA) -->
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Cuanto cuesta la cobertura de una boda?</h3>
+                            <div class="faq-icon transition-transform duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out mt-4">
+                            <p class="description-font text-gray-700 leading-relaxed pr-8">
+                                Entiendo perfectamente que el presupuesto es clave. El costo de la cobertura depende principalmente de un factor: el numero de horas que necesites. Esto nos permite crear un plan totalmente a tu medida.
+                                <br><br>
+                                Para que tengas una referencia clara, he cubierto bodas intimas de 2 horas desde $4,500 MXN, y coberturas mas completas que pueden llegar hasta los $30,000 MXN. La mejor manera de saber el precio exacto para tu boda es agendando tu sesion de diseño de cobertura. Ahi podremos definir las horas y detalles para darte una cotizacion precisa.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Pregunta 3 -->
+                    <div class="faq-item border-b border-gray-200 pb-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Como reservo la fecha de mi boda?</h3>
+                            <div class="faq-icon transition-transform duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out mt-4">
+                            <p class="description-font text-gray-700 leading-relaxed pr-8">
+                                ¡Es muy sencillo! Una vez que tengamos nuestra sesion de diseño de cobertura y definamos el plan perfecto para ti, te enviare un contrato digital con todos los detalles acordados. Para reservar oficialmente tu fecha, solo necesitas firmar el contrato y cubrir un anticipo que acordemos durante la charla. Con eso, tu fecha queda bloqueada exclusivamente para ti y nadie mas puede tomarla.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Pregunta 4 (AÑADIDA) -->
+                    <div class="faq-item border-b-2 border-gray-200 pb-6">
+                        <button class="faq-question w-full flex justify-between items-center text-left">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Que metodo de pago aceptas?</h3>
+                            <div class="faq-icon transition-transform duration-300">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            </div>
+                        </button>
+                        <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-in-out mt-4">
+                            <p class="description-font text-gray-700 leading-relaxed pr-8">
+                                Acepto efectivo, transferencia bancaria y pago con tarjeta de credito o debito. Si decides pagar con tu tarjeta de credito, tienes la opcion de diferir el total a meses sin intereses. Esto depende de las promociones que tu banco tenga disponibles, ¡asi que puedes aprovechar esa flexibilidad!
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -317,55 +511,90 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // === SCRIPT PARA CARRUSEL DE TESTIMONIOS ===
             const wrapper = document.querySelector('.slides-wrapper');
-            if (!wrapper) return;
-            const slides = document.querySelectorAll('.testimonial-slide');
-            const indicatorsContainers = document.querySelectorAll('.carousel-indicators-container');
-            const totalSlides = slides.length;
-            let currentSlide = 0;
-            let slideInterval;
+            if (wrapper) {
+                const slides = document.querySelectorAll('.testimonial-slide');
+                const indicatorsContainers = document.querySelectorAll('.carousel-indicators-container');
+                const totalSlides = slides.length;
+                let currentSlide = 0;
+                let slideInterval;
 
-            let indicatorsHTML = '';
-            for (let i = 0; i < totalSlides; i++) {
-                indicatorsHTML += `<button data-slide-to="${i}" class="carousel-dot bg-gray-500 rounded-full"></button>`;
-            }
-            indicatorsContainers.forEach(container => { container.innerHTML = indicatorsHTML; });
+                let indicatorsHTML = '';
+                for (let i = 0; i < totalSlides; i++) {
+                    indicatorsHTML += `<button data-slide-to="${i}" class="carousel-dot bg-gray-500 rounded-full"></button>`;
+                }
+                indicatorsContainers.forEach(container => { container.innerHTML = indicatorsHTML; });
 
-            const dots = document.querySelectorAll('.carousel-dot');
+                const dots = document.querySelectorAll('.carousel-dot');
 
-            function updateIndicators() {
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('bg-white', i === currentSlide);
-                    dot.classList.toggle('bg-gray-500', i !== currentSlide);
+                function updateIndicators() {
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle('bg-white', i === currentSlide);
+                        dot.classList.toggle('bg-gray-500', i !== currentSlide);
+                    });
+                }
+
+                function showSlide(index) {
+                    wrapper.style.transform = `translateX(-${index * 100}%)`;
+                    currentSlide = index;
+                    updateIndicators();
+                }
+
+                function startCarousel() {
+                    slideInterval = setInterval(() => {
+                        const nextSlide = (currentSlide + 1) % totalSlides;
+                        showSlide(nextSlide);
+                    }, 5000);
+                }
+
+                function stopCarousel() { clearInterval(slideInterval); }
+
+                dots.forEach(dot => {
+                    dot.addEventListener('click', function () {
+                        const slideIndex = parseInt(this.getAttribute('data-slide-to'));
+                        stopCarousel();
+                        showSlide(slideIndex);
+                        startCarousel();
+                    });
                 });
+
+                showSlide(0);
+                startCarousel();
             }
 
-            function showSlide(index) {
-                wrapper.style.transform = `translateX(-${index * 100}%)`;
-                currentSlide = index;
-                updateIndicators();
-            }
+            // === CÓDIGO AÑADIDO PARA EL CARRUSEL DE PLAN DE FOTOS ===
+            const planContainer = document.querySelector('.horizontal-scroll-container');
+            const scrollLeftButton = document.getElementById('plan-scroll-left');
+            const scrollRightButton = document.getElementById('plan-scroll-right');
 
-            function startCarousel() {
-                slideInterval = setInterval(() => {
-                    const nextSlide = (currentSlide + 1) % totalSlides;
-                    showSlide(nextSlide);
-                }, 5000);
-            }
+            if (planContainer && scrollLeftButton && scrollRightButton) {
+                const card = planContainer.querySelector('.flex-shrink-0');
+                const scrollAmount = card ? card.offsetWidth + 24 : 344; // 24px is the space-x-6 gap
 
-            function stopCarousel() { clearInterval(slideInterval); }
+                const updateButtonState = () => {
+                    scrollLeftButton.disabled = planContainer.scrollLeft < 10;
+                    scrollRightButton.disabled = planContainer.scrollWidth - planContainer.scrollLeft - planContainer.clientWidth < 10;
+                };
 
-            dots.forEach(dot => {
-                dot.addEventListener('click', function () {
-                    const slideIndex = parseInt(this.getAttribute('data-slide-to'));
-                    stopCarousel();
-                    showSlide(slideIndex);
-                    startCarousel();
+                scrollLeftButton.addEventListener('click', () => {
+                    planContainer.scrollBy({
+                        left: -scrollAmount,
+                        behavior: 'smooth'
+                    });
                 });
-            });
 
-            showSlide(0);
-            startCarousel();
+                scrollRightButton.addEventListener('click', () => {
+                    planContainer.scrollBy({
+                        left: scrollAmount,
+                        behavior: 'smooth'
+                    });
+                });
+
+                planContainer.addEventListener('scroll', updateButtonState);
+                updateButtonState(); // Initial check
+            }
+
 
             // === CÓDIGO AÑADIDO PARA RASTREAR EVENTOS DEL PÍXEL ===
             // Se asegura de que la función fbq exista antes de usarla.
@@ -382,18 +611,91 @@
                     console.log('Pixel Event: Contact (Main)');
                 });
 
-                // Rastrea el clic en el botón de WhatsApp.
-                const whatsappButton = document.querySelector('a[href*="api.whatsapp.com"]');
-                if (whatsappButton) {
+                 // === CÓDIGO MODIFICADO PARA RASTREAR EL NUEVO CHAT DE WHATSAPP ===
+                const whatsappButton = document.getElementById('whatsapp-responder-btn');
+                if(whatsappButton) {
                     whatsappButton.addEventListener('click', function() {
-                        fbq('track', 'Contact', { content_name: 'WhatsApp' });
-                         console.log('Pixel Event: Contact (WhatsApp)');
+                        fbq('track', 'Contact', { content_name: 'WhatsApp Chat' });
+                        console.log('Pixel Event: Contact (WhatsApp Chat)');
                     });
                 }
             }
+             // === CÓDIGO AÑADIDO PARA EL WIDGET DE WHATSAPP FLOTANTE ===
+            const widget = document.getElementById('whatsapp-chat-widget');
+            const openButton = document.getElementById('whatsapp-open-btn');
+
+            if(widget && openButton) {
+                openButton.addEventListener('click', () => {
+                    widget.classList.toggle('active');
+                });
+            }
+
+            // === CÓDIGO AÑADIDO PARA LA FUNCIONALIDAD DEL ACORDEÓN DE FAQ ===
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const answer = item.querySelector('.faq-answer');
+                const icon = item.querySelector('.faq-icon');
+
+                question.addEventListener('click', () => {
+                    // Cierra todos los demás items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.faq-answer').style.maxHeight = '0px';
+                            otherItem.querySelector('.faq-icon').classList.remove('rotate-45');
+                        }
+                    });
+
+                    // Abre o cierra el item actual
+                    const isExpanded = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                    if (isExpanded) {
+                        answer.style.maxHeight = '0px';
+                        icon.classList.remove('rotate-45');
+                    } else {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.classList.add('rotate-45');
+                    }
+                });
+            });
         });
     </script>
 
+    <!-- HTML AÑADIDO PARA EL NUEVO WIDGET DE WHATSAPP -->
+    <div id="whatsapp-chat-widget">
+        <!-- Contenedor de la ventana de chat (inicialmente oculta) -->
+        <div id="chat-popup" class="shadow-2xl rounded-lg">
+            <!-- Header con botón para cerrar -->
+            <div class="bg-white rounded-t-lg p-3 flex justify-end">
+                <button onclick="document.getElementById('whatsapp-chat-widget').classList.remove('active')" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 transition-colors">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <!-- Mensaje de bienvenida -->
+            <div class="p-4 bg-green-500 text-white">
+                <p class="description-font">No dudes en contactarme y con gusto te mando toda la informacion que necesites. Te atiendo personalmente.</p>
+            </div>
+            <!-- Mensaje secundario con foto -->
+            <div class="p-4 bg-white">
+                <div class="flex items-center space-x-3">
+                    <img src="https://placehold.co/40x40/E2E8F0/4A5568?text=FE" alt="Avatar" class="w-10 h-10 rounded-full">
+                    <p class="description-font bg-gray-100 p-3 rounded-lg">👋 Hola, ¿Como te puedo ayudar?</p>
+                </div>
+            </div>
+            <!-- Botón de acción -->
+            <a id="whatsapp-responder-btn" href="https://wa.me/5216643379721?text=Hola,%20quisiera%20más%20información." target="_blank" class="block bg-white p-4 rounded-b-lg border-t border-gray-200 hover:bg-gray-50 transition-colors">
+                <div class="flex items-center justify-between">
+                    <span class="description-font font-bold text-gray-700">Responder a Finite Estudio</span>
+                    <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+                </div>
+            </a>
+        </div>
+        <!-- Botón principal para abrir el chat -->
+        <button id="whatsapp-open-btn" class="mt-4 bg-green-500 text-white font-bold description-font py-3 px-6 rounded-full shadow-lg flex items-center space-x-3 hover:bg-green-600 transition-colors">
+            <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755994836/410199-PD37U2-851_povmt3.png" alt="WhatsApp Icon" class="w-6 h-6">
+            <span>Hola, Mandame mensaje y resuelvo tus dudas!</span>
+        </button>
+    </div>
 </body>
 </html>
+
 
