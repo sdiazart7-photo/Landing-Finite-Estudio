@@ -203,6 +203,24 @@
             pointer-events: auto;
         }
 
+        /* ===== NUEVOS ESTILOS PARA LA ANIMACION DEL TEXTO DE WHATSAPP ===== */
+        .whatsapp-text-bubble {
+            /* Estilos para el bocadillo de texto en móvil */
+            position: absolute;
+            right: 80px; /* Posicionar al lado del botón */
+            bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+            transform: scale(0.9);
+            pointer-events: none; /* No se puede hacer clic en el texto */
+            width: max-content;
+        }
+
+        .whatsapp-text-bubble.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         /* ===== ESTILOS CORREGIDOS PARA EL CARRUSEL DE IMAGENES SUPERIOR ===== */
         .hero-carousel-container {
             overflow: hidden;
@@ -742,11 +760,22 @@
              // === CÓDIGO AÑADIDO PARA EL WIDGET DE WHATSAPP FLOTANTE ===
             const widget = document.getElementById('whatsapp-chat-widget');
             const openButton = document.getElementById('whatsapp-open-btn');
+            const textBubble = document.getElementById('whatsapp-text-bubble');
 
             if(widget && openButton) {
                 openButton.addEventListener('click', () => {
                     widget.classList.toggle('active');
                 });
+            }
+            
+            // Animación del bocadillo de texto solo en móvil
+            if (textBubble && window.matchMedia("(max-width: 768px)").matches) {
+                setInterval(() => {
+                    textBubble.classList.add('show');
+                    setTimeout(() => {
+                        textBubble.classList.remove('show');
+                    }, 4000); // El texto es visible por 4 segundos
+                }, 8000); // El ciclo se repite cada 8 segundos
             }
 
             // === CÓDIGO CORREGIDO PARA LA FUNCIONALIDAD DEL ACORDEÓN DE FAQ ===
@@ -809,11 +838,19 @@
                 </div>
             </a>
         </div>
+
         <!-- Botón principal para abrir el chat -->
-        <button id="whatsapp-open-btn" class="mt-4 bg-green-500 text-white font-bold description-font py-3 px-6 rounded-full shadow-lg flex items-center space-x-3 hover:bg-green-600 transition-colors">
-            <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755994836/410199-PD37U2-851_povmt3.png" alt="WhatsApp Icon" class="w-6 h-6">
-            <span>Hola, Mandame mensaje y resuelvo tus dudas!</span>
+        <button id="whatsapp-open-btn" class="bg-green-500 text-white font-bold description-font rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-colors w-16 h-16 md:w-auto md:h-auto md:py-3 md:px-6 md:space-x-3">
+            <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755994836/410199-PD37U2-851_povmt3.png" alt="WhatsApp Icon" class="w-8 h-8 md:w-6 md:h-6">
+            <span class="hidden md:inline">Hola, Mandame mensaje y resuelvo tus dudas!</span>
         </button>
+
+        <!-- Bocadillo de texto que aparece y desaparece (solo en móvil) -->
+        <div id="whatsapp-text-bubble" class="whatsapp-text-bubble md:hidden bg-white p-3 rounded-lg shadow-lg">
+            <p class="description-font text-sm text-gray-800">Hola, Mandame mensaje y resuelvo tus dudas!</p>
+            <!-- Pequeño triángulo para el bocadillo -->
+            <div class="absolute bottom-2 -right-2 w-0 h-0 border-t-[10px] border-t-transparent border-l-[12px] border-l-white border-b-[10px] border-b-transparent"></div>
+        </div>
     </div>
 </body>
 </html>
