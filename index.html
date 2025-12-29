@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paquete Premier - Finite Estudio</title>
+    <title>Finite Estudio - Paquete Premier</title>
     <!-- FAVICON --><link rel="icon" type="image/png" href="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757627910/storie-portada_iftooq.png">
 
     <!-- =============================================================== */
@@ -31,7 +31,10 @@
 
       gtag('config', 'G-P67NB8CXYP');
     </script>
-    <!-- End Google Analytics --><!-- Google Fonts Import: Cormorant Garamond (Reemplaza a The Seasons) --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- End Google Analytics -->
+
+    <!-- Google Fonts Import: Cormorant Garamond (Reemplaza a The Seasons) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
 
@@ -56,18 +59,6 @@
         }
 
         /* Fuentes personalizadas */
-        /* @font-face {
-            font-family: 'The Seasons';
-            src: url('https://res.cloudinary.com/drrhn6t1c/raw/upload/v1755826797/Fontspring-DEMO-theseasons-reg_evnlrs.otf') format('opentype');
-            font-weight: 400;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'The Seasons';
-            src: url('https://res.cloudinary.com/drrhn6t1c/raw/upload/v1755826797/Fontspring-DEMO-theseasons-lt_wuifpf.otf') format('opentype');
-            font-weight: 100;
-            font-style: normal;
-        } */
         @font-face {
             font-family: 'Glacial Indifference';
             src: url('https://res.cloudinary.com/drrhn6t1c/raw/upload/v1755827417/GlacialIndifference-Regular_z5pngu.otf') format('opentype');
@@ -84,10 +75,6 @@
             font-family: 'Glacial Indifference', sans-serif;
         }
 
-        /* Estilos de Navegación Eliminados */
-        
-        /* Estilos del Widget de WhatsApp Eliminados */
-        
         /* ESTILOS CARRUSEL DE FOTOS AÑADIDOS */
         .hero-carousel-container {
             overflow: hidden;
@@ -110,12 +97,39 @@
             width: auto;
             display: block;
         }
-        /* FIN ESTILOS CARRUSEL DE FOTOS */
-
+        
+        /* Estilos para el Switch de Paquetes */
+        .package-switch {
+            display: inline-flex;
+            background-color: #e5e5e5;
+            border-radius: 9999px;
+            padding: 4px;
+            margin-bottom: 2rem;
+        }
+        .package-option {
+            padding: 8px 24px;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Glacial Indifference', sans-serif;
+            font-weight: bold;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+        .package-option.active {
+            background-color: #2b2b2b;
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .package-option:not(.active) {
+            color: #666;
+        }
+        .package-option:not(.active):hover {
+            color: #2b2b2b;
+        }
 
         /* Media Query para móvil */
         @media (max-width: 768px) {
-            /* Estilos de navegación móvil eliminados */
             .edition-text {
                 white-space: nowrap; /* Asegura que el texto no se rompa */
                 width: fit-content; /* Ajusta el ancho al contenido */
@@ -136,12 +150,9 @@
             <!-- Contenido del Hero --><div class="relative z-10 p-4 pt-24 pb-4">
                 <p style="font-weight: 300;" class="text-3xl md:text-4xl">PAQUETE</p>
                 <h1 style="font-weight: 300;" class="text-6xl md:text-8xl">PREMIER</h1>
-                <div class="flex items-center justify-center mt-2">
-                    <hr class="w-16 border-t-2 border-white mx-4">
-                    <p class="text-xl md:text-2xl tracking-[0.2em] uppercase edition-text">Edición Especial</p> <!-- CLASE EDITION-TEXT AÑADIDA --><hr class="w-16 border-t-2 border-white mx-4">
-                </div>
+                <!-- TÍTULO EDICIÓN ESPECIAL ELIMINADO -->
                 
-                <!-- PRECIO ELIMINADO DE AQUÍ --><a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="hero-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                <!-- PRECIO ELIMINADO DE AQUÍ --><a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="hero-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                     RESERVAR MI FECHA
                 </a>
             </div>
@@ -150,13 +161,13 @@
         <!-- NUEVA SECCIÓN "LA MEMORIA PUEDE FALLAR" (RESTAURADA) --><section class="bg-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <p class="description-font text-xl text-center text-gray-700 mb-12">La memoria puede fallar. Pero tus fotos... ellas te devuelven cada risa, cada mirada, cada piel chinita. La promesa es que revivas el día de tu boda, sin que se escape nada.</p>
-                <!-- BOTÓN AÑADIDO --><a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="memoria-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                <!-- BOTÓN AÑADIDO --><a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="memoria-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                     RESERVAR MI FECHA
                 </a>
             </div>
         </section>
 
-        <!-- Sección de Inclusiones (RESTAURADA) --><section class="bg-brand-black text-brand-white py-24 px-4">
+        <!-- Sección de Inclusiones (CON SWITCH) --><section class="bg-brand-black text-brand-white py-24 px-4">
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
                 
                 <!-- Columna de la Imagen (MOVIDA A LA IZQUIERDA Y CON MARGEN) --><div class="md:ml-12">
@@ -164,104 +175,132 @@
                 </div>
 
                 <!-- Columna de Texto (MOVIDA A LA DERECHA) --><div>
-                    <!-- Nombre del paquete agregado --><h3 style="font-weight: 300;" class="text-4xl md:text-5xl mb-4">PAQUETE PREMIER</h3>
+                    <!-- Nombre del paquete agregado --><h3 style="font-weight: 300;" class="text-4xl md:text-5xl mb-6">PAQUETE PREMIER</h3>
+                    
+                    <!-- SWITCH DE OPCIONES -->
+                    <div class="package-switch mb-8">
+                        <div id="btn-photo" class="package-option active">FOTOGRAFÍA</div>
+                        <div id="btn-photo-video" class="package-option">FOTOGRAFÍA + VIDEO</div>
+                    </div>
+
                     <h2 class="description-font text-xl text-center md:text-left mb-6">Incluye:</h2>
-                    <ul class="space-y-2 description-font text-xl text-gray-300">
-                        <li class="flex items-center">
-                            <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Cobertura del día de la boda, hasta 10 horas
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            500 - 600 fotografías digitales
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Regalo exclusivo a elegir
-                        </li>
-                        <li class="flex items-center">
-                            <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            Galería online
-                        </li>
-                    </ul>
                     
-                    <!-- PRECIO Y BOTÓN AÑADIDOS A LA DERECHA --><div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
-                        <p class="description-font text-3xl md:text-4xl">$27,500 MXN</p> <!-- TIPOGRAFÍA DEL PRECIO CAMBIADA --><a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="include-cta-button" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
-                            RESERVAR MI FECHA
-                        </a>
+                    <!-- Contenedor con altura mínima para evitar saltos -->
+                    <div class="min-h-[480px] md:min-h-[450px]">
+                        <!-- CONTENIDO SOLO FOTO -->
+                        <div id="content-photo">
+                            <ul class="space-y-2 description-font text-xl text-gray-300">
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Cobertura el día de la boda hasta 12 horas
+                                </li>
+                                <!-- Sesión Save The Date ELIMINADA -->
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Preview express
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    500 a 600 fotografías digitales
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Galería Online
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Album digital
+                                </li>
+                            </ul>
+                            <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
+                                <p class="description-font text-3xl md:text-4xl">$25,000 MXN</p>
+                                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                                    RESERVAR MI FECHA
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- CONTENIDO FOTO + VIDEO (OCULTO POR DEFECTO) -->
+                        <div id="content-photo-video" class="hidden">
+                            <ul class="space-y-2 description-font text-xl text-gray-300">
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Cobertura el día de la boda hasta 12 horas
+                                </li>
+                                <!-- Sesión Save The Date ELIMINADA -->
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Preview express
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    500 a 600 fotografías digitales
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Galería Online
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Album digital
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Short video de 2 minutos
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                    Full video de 35 - 40 minutos
+                                </li>
+                            </ul>
+                            <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
+                                <p class="description-font text-3xl md:text-4xl">$39,500 MXN</p>
+                                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                                    RESERVAR MI FECHA
+                                </a>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>
             </div>
         </section>
 
-        <!-- Sección Regalo Exclusivo (MOVIDA AQUÍ Y REDISEÑADA) --><section class="bg-brand-white text-brand-black py-24 px-4">
-            <div class="max-w-5xl mx-auto px-6 text-center">
-                <h2 class="text-4xl md:text-5xl tracking-wider uppercase mb-6">Regalo Exclusivo</h2>
-                <p class="description-font text-xl text-gray-700 max-w-3xl mx-auto mb-12">
-                    Como parte de este paquete edición especial, recibirás (TOTALMENTE GRATIS) uno de los siguientes regalos de lujo.<br>Tú eliges tu favorito:
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- Card 1: Save the Date --><div class="bg-white rounded-xl shadow-lg text-left border border-gray-200 overflow-hidden">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756832323/save-the-date-syb-38_fait9b.jpg" alt="Sesión Save The Date" class="w-full h-64 object-cover">
-                        <div class="p-8">
-                            <h3 class="text-3xl mb-4">Sesión "Save The Date"</h3>
-                            <p class="description-font text-gray-600">
-                                ¡La experiencia ideal para tu "Save the Date"! Realizaremos una sesión de 2 horas en una locación exclusiva espectacular.
-                            </p>
-                        </div>
-                    </div>
-                    <!-- Card 2: Photobook --><div class="bg-white rounded-xl shadow-lg text-left border border-gray-200 overflow-hidden">
-                        <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1757798850/boda-l_e-95_e9ud9a.jpg" alt="Photobook de Boda" class="w-full h-64 object-cover">
-                        <div class="p-8">
-                            <h3 class="text-3xl mb-4">Photobook de Boda</h3>
-                            <p class="description-font text-gray-600">
-                                Un álbum impreso que plasma los mejores momentos de tu boda.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <!-- BOTÓN AÑADIDO --><div class="mt-12">
-                    <a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="regalo-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
-                        RESERVAR MI FECHA
-                    </a>
-                </div>
-            </div>
-        </section>
+        <!-- Sección Regalo Exclusivo (ELIMINADA) -->
 
-        <!-- NUEVA SECCIÓN DE EXTRAS --><section class="bg-brand-black text-brand-white py-24 px-4">
+        <!-- NUEVA SECCIÓN DE EXTRAS (FONDO CLARO) --><section class="bg-brand-white text-brand-black py-24 px-4">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl md:text-5xl tracking-wider uppercase">Extras Disponibles</h2>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 description-font text-xl text-gray-300 text-center">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 description-font text-xl text-gray-700 text-center">
                     <div>
-                        <span>Album digital</span>
-                        <p class="font-bold">$1,500</p>
+                        <span>Sesión "Save the Date"</span>
+                        <p class="font-bold text-brand-black">$3,650</p>
                     </div>
                     <div>
-                        <span>Preview express</span>
-                        <p class="font-bold">$1,500</p>
+                        <span>Álbum Impreso</span>
+                        <p class="font-bold text-brand-black">$3,290</p>
                     </div>
                     <div>
-                        <span>Maquillaje y peinado</span>
-                        <p class="font-bold">$2,500</p>
+                        <span>Preview Express (entrega rápida)</span>
+                        <p class="font-bold text-brand-black">$1,650</p>
+                    </div>
+                    <div>
+                        <span>Álbum Digital</span>
+                        <p class="font-bold text-brand-black">$1,650</p>
+                    </div>
+                    <div>
+                        <span>Maquillaje y Peinado</span>
+                        <p class="font-bold text-brand-black">$2,750</p>
                     </div>
                     <div>
                         <span>Videógrafo</span>
-                        <p class="font-bold">A cotizar</p>
+                        <p class="font-bold text-brand-black">A cotizar</p>
                     </div>
                     <div>
-                        <span>Segundo fotógrafo</span>
-                        <p class="font-bold">$3,500</p>
-                    </div>
-                    <div>
-                        <span>Album impreso</span>
-                        <p class="font-bold">$3,000</p>
-                    </div>
-                    <div>
-                        <span>Sesión Save the Date</span>
-                        <p class="font-bold">$3,300</p>
+                        <span>Segundo Fotógrafo</span>
+                        <p class="font-bold text-brand-black">$3,750</p>
                     </div>
                 </div>
             </div>
@@ -270,8 +309,8 @@
         <!-- CARRUSEL DE FOTOS AÑADIDO (SOLO ESTA INSTANCIA) --><div class="hero-carousel-container" style="height: 60vh; margin-bottom: 3rem;">
             <div id="hero-carousel-track" class="hero-carousel-track">
                 <!-- Nuevas imágenes añadidas y mezcladas --><div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714256/sn-m_i_84_iil2lk.jpg" alt="Foto de boda 1"></div>
-                <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755893177/a_r_-_web_1_f0pgxr.jpg" alt="Foto de boda 4"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714308/boda-a_a-339_xbgnra.jpg" alt="Foto de boda 3"></div>
+                <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755893177/a_r_-_web_1_f0pgxr.jpg" alt="Foto de boda 4"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714285/boda-y_o-304_hifnfq.jpg" alt="Foto de boda 2"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756832323/save-the-date-syb-38_fait9b.jpg" alt="Foto de boda 6"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755892944/m_i_-_web_30_vsovrm.jpg" alt="Foto de boda 5"></div>
@@ -320,12 +359,12 @@
                         <span class="text-6xl font-bold text-brand-brown description-font">04</span>
                         <h3 class="text-2xl font-bold mt-4 mb-3">Entrega</h3>
                         <p class="description-font text-gray-700 leading-relaxed">
-                            Una vez que hayamos vivido el gran día, nos tomará entre 15 a 25 días hábiles entregar su material. Les enviaremos enlaces de descarga para su material digital.
+                            Una vez que hayamos vivido el gran día, nos tomará entre 20 a 25 días hábiles entregar su material. Les enviaremos enlaces de descarga para su material digital.
                         </p>
                     </div>
                 </div>
                 <!-- BOTÓN AÑADIDO --><div class="text-center mt-16">
-                    <a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="proceso-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                    <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="proceso-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
                 </div>
@@ -365,7 +404,7 @@
                         </div>
                         <div class="md:col-span-2">
                             <p class="description-font text-gray-700 leading-relaxed">
-                                El tiempo de entrega de tus fotos es de 15 a 25 días.
+                                El tiempo de entrega de tus fotos es de 20 a 25 días hábiles.
                             </p>
                         </div>
                     </div>
@@ -376,36 +415,14 @@
                         </div>
                         <div class="md:col-span-2">
                             <p class="description-font text-gray-700 leading-relaxed">
-                                Sí, trabajo de la mano con un videógrafo profesional, el servicio de video se cotiza de manera independiente
+                                Sí, trabajo de la mano con un videógrafo profesional.
                             </p>
                         </div>
                     </div>
                     
-                    <!-- Pregunta 4 --><div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
-                        <div class="md:col-span-1">
-                            <h3 class="text-xl md:text-2xl font-bold">¿Hasta cuándo tengo para contratar?</h3>
-                        </div>
-                        <div class="md:col-span-2">
-                            <p class="description-font text-gray-700 leading-relaxed">
-                                El Paquete Premier - Edición Especial es válido siempre y cuando reserves tu fecha antes del 31 de Diciembre 2025.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <!-- Pregunta 5 --><div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b-2 border-gray-200 pb-8">
-                        <div class="md:col-span-1">
-                            <h3 class="text-xl md:text-2xl font-bold">¿Para qué fechas de boda aplica?</h3>
-                        </div>
-                        <div class="md:col-span-2">
-                            <p class="description-font text-gray-700 leading-relaxed">
-                                El Paquete Premier - Edición Especial aplica para cualquier fecha de boda disponible durante el 2026.
-                            </p>
-                        </div>
-                    </div>
-
                 </div>
                 <!-- BOTÓN AÑADIDO --><div class="text-center mt-16">
-                    <a href="https://api.whatsapp.com/send?phone=+526643379721&text=Hola%20Saul!%0AMe%20interesa%20el%20Paquete%20Premiere%20-%20Edici%C3%B3n%20especial%20para%20mi%20boda%F0%9F%93%B8" target="_blank" id="faq-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                    <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="faq-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
                 </div>
@@ -425,6 +442,29 @@
 
     <!-- Script de Cal.com Eliminado --><script>
         document.addEventListener('DOMContentLoaded', function () {
+            
+            // --- LÓGICA DEL SWITCH DE PAQUETES ---
+            const btnPhoto = document.getElementById('btn-photo');
+            const btnPhotoVideo = document.getElementById('btn-photo-video');
+            const contentPhoto = document.getElementById('content-photo');
+            const contentPhotoVideo = document.getElementById('content-photo-video');
+
+            if(btnPhoto && btnPhotoVideo) {
+                btnPhoto.addEventListener('click', function() {
+                    btnPhoto.classList.add('active');
+                    btnPhotoVideo.classList.remove('active');
+                    contentPhoto.classList.remove('hidden');
+                    contentPhotoVideo.classList.add('hidden');
+                });
+
+                btnPhotoVideo.addEventListener('click', function() {
+                    btnPhotoVideo.classList.add('active');
+                    btnPhoto.classList.remove('active');
+                    contentPhotoVideo.classList.remove('hidden');
+                    contentPhoto.classList.add('hidden');
+                });
+            }
+
             // === CÓDIGO AÑADIDO PARA RASTREAR EVENTOS DEL PÍXEL ===
             if (typeof fbq === 'function') {
                 // Rastreador de botón de navegación eliminado
@@ -477,7 +517,7 @@
                     });
                 }
 
-                const regaloCtaButton = document.getElementById('regalo-cta-button');
+                const regaloCtaButton = document.getElementById('regalo-cta-button'); // NOTA: ESTE BOTÓN FUE ELIMINADO
                 if (regaloCtaButton) {
                      regaloCtaButton.addEventListener('click', function(e) {
                         // e.preventDefault(); // Desactivado
