@@ -33,7 +33,7 @@
     </script>
     <!-- End Google Analytics -->
 
-    <!-- Google Fonts Import: Cormorant Garamond (Reemplaza a The Seasons) -->
+    <!-- Google Fonts Import: Cormorant Garamond -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;700&display=swap" rel="stylesheet">
@@ -75,11 +75,11 @@
             font-family: 'Glacial Indifference', sans-serif;
         }
 
-        /* ESTILOS CARRUSEL DE FOTOS AÑADIDOS */
+        /* ESTILOS CARRUSEL DE FOTOS */
         .hero-carousel-container {
             overflow: hidden;
             width: 100%;
-            height: 60vh; /* AUMENTADO EL TAMAÑO */
+            height: 60vh;
             background-color: #f8f7f3;
         }
         .hero-carousel-track {
@@ -98,15 +98,18 @@
             display: block;
         }
         
-        /* Estilos para el Switch de Paquetes */
-        .package-switch {
+        /* ESTILOS UNIFICADOS PARA LOS SWITCHES (Botones) */
+        .custom-switch {
             display: inline-flex;
             background-color: #e5e5e5;
             border-radius: 9999px;
             padding: 4px;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap; /* Asegura que se adapte en móviles muy pequeños */
+            justify-content: center; /* Centrado */
         }
-        .package-option {
+        
+        .switch-option {
             padding: 8px 24px;
             border-radius: 9999px;
             cursor: pointer;
@@ -115,174 +118,167 @@
             font-weight: bold;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
+            color: #666;
+            text-align: center;
         }
-        .package-option.active {
+
+        /* Ajuste para móviles en los botones de nivel si es necesario */
+        @media (max-width: 400px) {
+            .switch-option {
+                padding: 8px 16px; /* Un poco menos de padding horizontal en pantallas muy pequeñas */
+                font-size: 0.8rem;
+            }
+        }
+
+        .switch-option.active {
             background-color: #2b2b2b;
             color: #ffffff;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        .package-option:not(.active) {
-            color: #666;
-        }
-        .package-option:not(.active):hover {
+        
+        .switch-option:hover:not(.active) {
             color: #2b2b2b;
+            background-color: rgba(0,0,0,0.05);
+        }
+
+        /* Animación para items de video */
+        .video-item {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            max-height: 50px;
+            overflow: hidden;
+        }
+        .video-item.hidden-item {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            padding: 0;
         }
 
         /* Media Query para móvil */
         @media (max-width: 768px) {
             .edition-text {
-                white-space: nowrap; /* Asegura que el texto no se rompa */
-                width: fit-content; /* Ajusta el ancho al contenido */
-                margin-left: auto; /* Centra el texto */
-                margin-right: auto; /* Centra el texto */
+                white-space: nowrap;
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
 </head>
 <body class="bg-brand-white text-brand-black">
 
-    <!-- Header Eliminado --><main>
+    <main>
         <!-- Hero Section --><section class="relative h-screen min-h-[700px] flex items-center justify-center text-center text-white">
-            <!-- Imagen de fondo --><div class="absolute inset-0">
+            <div class="absolute inset-0">
                 <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1761847526/boda-s_b-191_zbvxma.jpg" alt="Pareja de bodas bajo un velo" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black/50"></div> <!-- Overlay oscuro --></div>
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
             
-            <!-- Contenido del Hero --><div class="relative z-10 p-4 pt-24 pb-4">
+            <div class="relative z-10 p-4 pt-24 pb-4">
                 <p style="font-weight: 300;" class="text-3xl md:text-4xl">PAQUETE</p>
                 <h1 style="font-weight: 300;" class="text-6xl md:text-8xl">PREMIER</h1>
-                <!-- TÍTULO EDICIÓN ESPECIAL ELIMINADO -->
-                
-                <!-- PRECIO ELIMINADO DE AQUÍ --><a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="hero-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="hero-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                     RESERVAR MI FECHA
                 </a>
             </div>
         </section>
 
-        <!-- NUEVA SECCIÓN "LA MEMORIA PUEDE FALLAR" (RESTAURADA) --><section class="bg-brand-white py-24 px-4">
+        <!-- Sección "La memoria puede fallar" --><section class="bg-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <p class="description-font text-xl text-center text-gray-700 mb-12">La memoria puede fallar. Pero tus fotos... ellas te devuelven cada risa, cada mirada, cada piel chinita. La promesa es que revivas el día de tu boda, sin que se escape nada.</p>
-                <!-- BOTÓN AÑADIDO --><a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="memoria-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="memoria-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                     RESERVAR MI FECHA
                 </a>
             </div>
         </section>
 
-        <!-- Sección de Inclusiones (CON SWITCH) --><section class="bg-brand-black text-brand-white py-24 px-4">
+        <!-- Sección de Inclusiones (REDISEÑADA MULTI-PAQUETE) --><section class="bg-brand-black text-brand-white py-24 px-4">
             <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
                 
-                <!-- Columna de la Imagen (MOVIDA A LA IZQUIERDA Y CON MARGEN) --><div class="md:ml-12">
+                <!-- Columna de la Imagen --><div class="md:ml-12">
                     <img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1756947818/jpeg-optimizer_boda-l_e-92_qh86yo.jpg" alt="Novia sonriendo con velo" class="shadow-2xl w-full h-auto">
                 </div>
 
-                <!-- Columna de Texto (MOVIDA A LA DERECHA) --><div>
-                    <!-- Nombre del paquete agregado --><h3 style="font-weight: 300;" class="text-4xl md:text-5xl mb-2">PAQUETE PREMIER</h3>
-                    <!-- SUBTÍTULO AÑADIDO -->
+                <!-- Columna de Texto --><div>
+                    <h3 style="font-weight: 300;" class="text-4xl md:text-5xl mb-2">PAQUETE PREMIER</h3>
+                    <!-- Subtítulo Fijo -->
                     <p class="description-font text-lg text-gray-400 mb-8 italic">Diseñado para que revivas tu boda de principio a fin</p>
                     
-                    <!-- SWITCH DE OPCIONES -->
-                    <div class="package-switch mb-8">
-                        <div id="btn-photo" class="package-option active">FOTOGRAFÍA</div>
-                        <div id="btn-photo-video" class="package-option">FOTOGRAFÍA + VIDEO</div>
+                    <!-- 1. SELECTOR DE SERVICIO (FOTO / VIDEO) - MOVIDO ARRIBA -->
+                    <div class="custom-switch mb-4">
+                        <div id="btn-srv-photo" class="switch-option service-option active" onclick="selectService('photo')">FOTOGRAFÍA</div>
+                        <div id="btn-srv-video" class="switch-option service-option" onclick="selectService('video')">FOTOGRAFÍA + VIDEO</div>
+                    </div>
+
+                    <!-- 2. SELECTOR DE NIVEL (TIER) - MOVIDO ABAJO Y ESTILIZADO IGUAL -->
+                    <!-- Bloque para asegurar que salte de línea -->
+                    <div class="w-full"></div> 
+                    <div class="custom-switch mb-8">
+                        <div class="switch-option tier-option" onclick="selectTier('esencial')" id="btn-tier-esencial">ESENCIAL</div>
+                        <div class="switch-option tier-option" onclick="selectTier('plus')" id="btn-tier-plus">PLUS</div>
+                        <div class="switch-option tier-option active" onclick="selectTier('exclusivo')" id="btn-tier-exclusivo">EXCLUSIVO</div>
                     </div>
 
                     <h2 class="description-font text-xl text-center md:text-left mb-6">Incluye:</h2>
                     
-                    <!-- Contenedor con altura mínima para evitar saltos -->
+                    <!-- Contenedor único de lista -->
                     <div class="min-h-[480px] md:min-h-[450px]">
-                        <!-- CONTENIDO SOLO FOTO -->
-                        <div id="content-photo">
-                            <ul class="space-y-2 description-font text-xl text-gray-300">
-                                <!-- NUEVO ITEM AGREGADO -->
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Un fotógrafo especialista en bodas
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Cobertura el día de la boda hasta 12 horas
-                                </li>
-                                <!-- Sesión Save The Date ELIMINADA -->
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Preview express
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    500 a 600 fotografías digitales
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Galería Online
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Album digital
-                                </li>
-                            </ul>
-                            <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
-                                <p class="description-font text-3xl md:text-4xl">$25,000 MXN</p>
-                                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
-                                    RESERVAR MI FECHA
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- CONTENIDO FOTO + VIDEO (OCULTO POR DEFECTO) -->
-                        <div id="content-photo-video" class="hidden">
-                            <ul class="space-y-2 description-font text-xl text-gray-300">
-                                <!-- NUEVOS ITEMS AGREGADOS -->
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Un fotógrafo especialista en bodas
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Un videógrafo especialista en bodas
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Cobertura el día de la boda hasta 12 horas
-                                </li>
-                                <!-- Sesión Save The Date ELIMINADA -->
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Preview express
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    500 a 600 fotografías digitales
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Galería Online
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Album digital
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Short video de 2 minutos
-                                </li>
-                                <li class="flex items-center">
-                                    <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                    Full video de 35 - 40 minutos
-                                </li>
-                            </ul>
-                            <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
-                                <p class="description-font text-3xl md:text-4xl">$39,500 MXN</p>
-                                <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
-                                    RESERVAR MI FECHA
-                                </a>
-                            </div>
+                        <ul class="space-y-2 description-font text-xl text-gray-300">
+                            <!-- Fotógrafo (Siempre visible) -->
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Un fotógrafo especialista en bodas
+                            </li>
+                            <!-- Videógrafo (Solo video) -->
+                            <li class="flex items-center video-item hidden-item">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Un videógrafo especialista en bodas
+                            </li>
+                            <!-- Cobertura (Dinámica) -->
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Cobertura el día de la boda por <span id="dynamic-hours" class="mx-1 font-bold text-white">12</span> horas
+                            </li>
+                            <!-- Items Fijos -->
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Preview express
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                500 a 600 fotografías digitales
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Galería Online
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Album digital
+                            </li>
+                            <!-- Items de Video (Solo video) -->
+                            <li class="flex items-center video-item hidden-item">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Short video de 2 minutos
+                            </li>
+                            <li class="flex items-center video-item hidden-item">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Full video de 35 - 40 minutos
+                            </li>
+                        </ul>
+                        
+                        <!-- Precio y CTA -->
+                        <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
+                            <p id="dynamic-price" class="description-font text-3xl md:text-4xl transition-all duration-300">$25,000 MXN</p>
+                            <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                                RESERVAR MI FECHA
+                            </a>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </section>
-
-        <!-- Sección Regalo Exclusivo (ELIMINADA) -->
 
         <!-- NUEVA SECCIÓN DE EXTRAS (FONDO CLARO) --><section class="bg-brand-white text-brand-black py-24 px-4">
             <div class="max-w-4xl mx-auto px-4">
@@ -322,9 +318,9 @@
             </div>
         </section>
 
-        <!-- CARRUSEL DE FOTOS AÑADIDO (SOLO ESTA INSTANCIA) --><div class="hero-carousel-container" style="height: 60vh; margin-bottom: 3rem;">
+        <!-- CARRUSEL DE FOTOS --><div class="hero-carousel-container" style="height: 60vh; margin-bottom: 3rem;">
             <div id="hero-carousel-track" class="hero-carousel-track">
-                <!-- Nuevas imágenes añadidas y mezcladas --><div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714256/sn-m_i_84_iil2lk.jpg" alt="Foto de boda 1"></div>
+                <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714256/sn-m_i_84_iil2lk.jpg" alt="Foto de boda 1"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714308/boda-a_a-339_xbgnra.jpg" alt="Foto de boda 3"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755893177/a_r_-_web_1_f0pgxr.jpg" alt="Foto de boda 4"></div>
                 <div class="hero-carousel-item"><img src="https://res.cloudinary.com/drrhn6t1c/image/upload/v1755714285/boda-y_o-304_hifnfq.jpg" alt="Foto de boda 2"></div>
@@ -379,7 +375,7 @@
                         </p>
                     </div>
                 </div>
-                <!-- BOTÓN AÑADIDO --><div class="text-center mt-16">
+                <div class="text-center mt-16">
                     <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="proceso-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
@@ -401,9 +397,8 @@
                 <div class="text-left mb-16">
                     <h2 class="text-2xl md:text-3xl tracking-wider mb-6 uppercase">PREGUNTAS FRECUENTES</h2>
                 </div>
-                <!-- MODIFICADO: Contenedor de preguntas ahora es un grid --><div class="space-y-12">
-                    
-                    <!-- Pregunta 1 --><div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                <div class="space-y-12">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
                         <div class="md:col-span-1">
                             <h3 class="text-xl md:text-2xl font-bold">¿Dónde te encuentras ubicado?</h3>
                         </div>
@@ -414,7 +409,7 @@
                         </div>
                     </div>
 
-                    <!-- Pregunta 2 --><div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
                         <div class="md:col-span-1">
                             <h3 class="text-xl md:text-2xl font-bold">¿En cuánto tiempo se entrega nuestra Boda?</h3>
                         </div>
@@ -425,7 +420,7 @@
                         </div>
                     </div>
 
-                    <!-- Pregunta 3 --><div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
                         <div class="md:col-span-1">
                             <h3 class="text-xl md:text-2xl font-bold">¿Ofreces servicio de video?</h3>
                         </div>
@@ -435,9 +430,8 @@
                             </p>
                         </div>
                     </div>
-                    
                 </div>
-                <!-- BOTÓN AÑADIDO --><div class="text-center mt-16">
+                <div class="text-center mt-16">
                     <a href="https://api.whatsapp.com/send?phone=+52526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="faq-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
@@ -445,179 +439,130 @@
             </div>
         </section>
 
-        <!-- Sección Agendar Cita Eliminada --></main>
+    </main>
 
     <footer class="bg-brand-white text-center py-8">
         <p class="text-brand-black tracking-widest text-sm">FINITE ESTUDIO 2026</p>
-        <!-- ENLACE DE INSTAGRAM AÑADIDO --><p class="mt-2">
+        <p class="mt-2">
             <a href="https://www.instagram.com/finite.estudio/" target="_blank" rel="noopener noreferrer" class="text-brand-black tracking-widest text-sm description-font hover:text-brand-brown transition-colors">
                 IG: @finite.estudio
             </a>
         </p>
     </footer>
 
-    <!-- Script de Cal.com Eliminado --><script>
-        document.addEventListener('DOMContentLoaded', function () {
+    <script>
+        // Configuración de Precios y Datos de los Paquetes
+        // Precios actualizados con terminación 990
+        const packages = {
+            esencial: {
+                hours: 8,
+                title: 'Esencial',
+                pricePhoto: 19990,
+                priceVideo: 34490 
+            },
+            plus: {
+                hours: 10,
+                title: 'Plus',
+                pricePhoto: 22490,
+                priceVideo: 36990 
+            },
+            exclusivo: {
+                hours: 12,
+                title: 'Exclusivo',
+                pricePhoto: 24990,
+                priceVideo: 39490
+            }
+        };
+
+        let currentTier = 'exclusivo';
+        let currentService = 'photo';
+
+        // Función para formatear dinero
+        const formatMoney = (amount) => {
+            return '$' + amount.toLocaleString('es-MX') + ' MXN';
+        };
+
+        // Función principal de actualización
+        function updateDisplay() {
+            const pkg = packages[currentTier];
             
-            // --- LÓGICA DEL SWITCH DE PAQUETES ---
-            const btnPhoto = document.getElementById('btn-photo');
-            const btnPhotoVideo = document.getElementById('btn-photo-video');
-            const contentPhoto = document.getElementById('content-photo');
-            const contentPhotoVideo = document.getElementById('content-photo-video');
+            // Actualizar horas en la lista
+            document.getElementById('dynamic-hours').textContent = pkg.hours;
+            
+            // Actualizar botones de Tier (ahora comparten clase visual con los de servicio pero con ID específico)
+            document.querySelectorAll('.tier-option').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-tier-${currentTier}`).classList.add('active');
+            
+            // Actualizar botones de Servicio
+            document.querySelectorAll('.service-option').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-srv-${currentService}`).classList.add('active');
 
-            if(btnPhoto && btnPhotoVideo) {
-                btnPhoto.addEventListener('click', function() {
-                    btnPhoto.classList.add('active');
-                    btnPhotoVideo.classList.remove('active');
-                    contentPhoto.classList.remove('hidden');
-                    contentPhotoVideo.classList.add('hidden');
+            // Actualizar Precio
+            const price = currentService === 'photo' ? pkg.pricePhoto : pkg.priceVideo;
+            document.getElementById('dynamic-price').textContent = formatMoney(price);
+
+            // Mostrar/Ocultar elementos de video
+            const videoItems = document.querySelectorAll('.video-item');
+            if (currentService === 'video') {
+                videoItems.forEach(item => {
+                    item.classList.remove('hidden-item');
+                    item.style.display = 'flex'; // Asegurar display flex para alineación
                 });
-
-                btnPhotoVideo.addEventListener('click', function() {
-                    btnPhotoVideo.classList.add('active');
-                    btnPhoto.classList.remove('active');
-                    contentPhotoVideo.classList.remove('hidden');
-                    contentPhoto.classList.add('hidden');
+            } else {
+                videoItems.forEach(item => {
+                    item.classList.add('hidden-item');
+                    setTimeout(() => {
+                         if(item.classList.contains('hidden-item')) item.style.display = 'none';
+                    }, 300); // Esperar a la transición
                 });
             }
+        }
 
-            // === CÓDIGO AÑADIDO PARA RASTREAR EVENTOS DEL PÍXEL ===
-            if (typeof fbq === 'function') {
-                // Rastreador de botón de navegación eliminado
-                
-                const heroCtaButton = document.getElementById('hero-cta-button');
-                if (heroCtaButton) {
-                     heroCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado para permitir enlace externo
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'Paquete Premier Hero' });
-                        console.log('Pixel Event: Contact (Hero)');
-                    });
-                }
+        // Funciones expuestas al HTML
+        window.selectTier = function(tier) {
+            currentTier = tier;
+            updateDisplay();
+        };
 
-                const customPackageButton = document.getElementById('custom-package-cta');
-                if (customPackageButton) {
-                    customPackageButton.addEventListener('click', function() {
-                        fbq('track', 'Contact', { content_name: 'Paquete Personalizado CTA' });
-                        console.log('Pixel Event: Contact (Custom Package)');
-                    });
-                }
+        window.selectService = function(service) {
+            currentService = service;
+            updateDisplay();
+        };
 
-                // --- AÑADIDOS RASTREADORES PARA NUEVOS BOTONES ---
-                const includeCtaButton = document.getElementById('include-cta-button');
-                if (includeCtaButton) {
-                     includeCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'Paquete Incluye CTA' });
-                        console.log('Pixel Event: Contact (Include)');
-                    });
-                }
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inicializar vista
+            updateDisplay();
 
-                const memoriaCtaButton = document.getElementById('memoria-cta-button');
-                if (memoriaCtaButton) {
-                     memoriaCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'Memoria CTA' });
-                        console.log('Pixel Event: Contact (Memoria)');
-                    });
-                }
-
-                const regaloCtaButton = document.getElementById('regalo-cta-button'); // NOTA: ESTE BOTÓN FUE ELIMINADO
-                if (regaloCtaButton) {
-                     regaloCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'Regalo CTA' });
-                        console.log('Pixel Event: Contact (Regalo)');
-                    });
-                }
-
-                const procesoCtaButton = document.getElementById('proceso-cta-button');
-                if (procesoCtaButton) {
-                     procesoCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'Proceso CTA' });
-                        console.log('Pixel Event: Contact (Proceso)');
-                    });
-                }
-
-                const faqCtaButton = document.getElementById('faq-cta-button');
-                if (faqCtaButton) {
-                     faqCtaButton.addEventListener('click', function(e) {
-                        // e.preventDefault(); // Desactivado
-                        // const targetSection = document.getElementById('paquete-personalizado-section');
-                        // if (targetSection) {
-                        //     targetSection.scrollIntoView({ behavior: 'smooth' });
-                        // }
-                        fbq('track', 'Contact', { content_name: 'FAQ CTA' });
-                        console.log('Pixel Event: Contact (FAQ)');
-                    });
-                }
-            }
-
-            // === SCRIPT PARA EL CARRUSEL DE FOTOS (HERO) AÑADIDO ===
+            // === CÓDIGO DEL CARRUSEL ===
             const heroTrack = document.getElementById('hero-carousel-track');
             if (heroTrack) {
                 const originalItems = Array.from(heroTrack.children);
-                // Duplicar items para el bucle
-                originalItems.forEach(item => {
-                    heroTrack.appendChild(item.cloneNode(true));
-                });
+                originalItems.forEach(item => heroTrack.appendChild(item.cloneNode(true)));
 
                 let currentPosition = 0;
                 let itemIndex = 0;
                 const items = Array.from(heroTrack.children);
                 
-                // Función para resetear el carrusel al final del bucle
                 const resetCarousel = () => {
-                    // Esperar a que la última transición suave termine antes de saltar
                     setTimeout(() => {
-                        heroTrack.style.transition = 'none'; // Quitar la transición para un salto instantáneo
+                        heroTrack.style.transition = 'none';
                         currentPosition = 0;
                         itemIndex = 0;
                         heroTrack.style.transform = 'translateX(0px)';
-                        heroTrack.offsetHeight; // Forzar un reflow para aplicar el cambio
-                    }, 50); // Un pequeño delay
+                        heroTrack.offsetHeight;
+                    }, 50);
                 };
 
-                // Función para mover al siguiente slide
                 const scrollNext = () => {
                     if (itemIndex >= originalItems.length) {
                         resetCarousel();
-                        setTimeout(scrollNext, 50); // Llamar a scrollNext de nuevo después del reseteo
+                        setTimeout(scrollNext, 50);
                         return;
                     }
+                    heroTrack.style.transition = 'transform 1s ease-in-out';
                     
-                    heroTrack.style.transition = 'transform 1s ease-in-out'; // Asegurar que la transición suave esté activa
-                    
-                    // Asegurarse de que itemWidths[itemIndex] no sea undefined
                     if (typeof itemWidths[itemIndex] === 'undefined') {
-                        // Si es undefined, podría ser que las imágenes aún no han cargado. 
-                        // Intentar recargar o esperar. Por ahora, solo saldremos para evitar NaN.
-                        console.warn('itemWidths no está definido para el índice:', itemIndex);
-                        // Intentar recalcular anchos si es la primera vez
-                        if(itemIndex === 0 && imagesLoaded < items.length) {
-                             console.log('Recalculando anchos...');
-                             preloadImagesAndStart(); // Intentar recargar
-                        }
+                        if(itemIndex === 0 && imagesLoaded < items.length) preloadImagesAndStart();
                         return; 
                     }
 
@@ -626,7 +571,6 @@
                     itemIndex++;
                 };
 
-                // Precargar imágenes para obtener sus anchos y luego iniciar el carrusel
                 let imagesLoaded = 0;
                 const itemWidths = [];
                 
@@ -635,55 +579,50 @@
                     items.forEach((item, index) => {
                         const img = item.querySelector('img');
                         const loadImage = () => {
-                            // Solo procesar si la imagen tiene dimensiones válidas
                             if(img.naturalWidth > 0 && img.naturalHeight > 0) {
                                 const aspectRatio = img.naturalWidth / img.naturalHeight;
                                 const containerHeight = heroTrack.clientHeight;
                                 const width = containerHeight * aspectRatio;
                                 item.style.width = `${width}px`;
                                 if (index < originalItems.length) {
-                                   itemWidths[index] = width + 4; // Incluir el margin-right
+                                   itemWidths[index] = width + 4;
                                 }
                             }
-                            
                             imagesLoaded++;
                             if (imagesLoaded === itemsToLoad) {
-                                // Iniciar el carrusel solo una vez
                                 if (window.carouselInterval) clearInterval(window.carouselInterval);
-                                window.carouselInterval = setInterval(scrollNext, 3000); // Iniciar el carrusel
+                                window.carouselInterval = setInterval(scrollNext, 3000);
                             }
                         };
-                        
                         img.onload = loadImage;
-                        img.onerror = () => { // Manejar errores de carga
-                            console.warn('Error al cargar imagen:', img.src);
-                            imagesLoaded++;
-                            if (imagesLoaded === itemsToLoad) {
-                                if (window.carouselInterval) clearInterval(window.carouselInterval);
-                                window.carouselInterval = setInterval(scrollNext, 3000); 
-                            }
-                        };
-
-                        // Si la imagen ya está en caché
-                        if (img.complete) {
-                            loadImage();
-                        }
+                        img.onerror = () => { imagesLoaded++; if (imagesLoaded === itemsToLoad) { if (window.carouselInterval) clearInterval(window.carouselInterval); window.carouselInterval = setInterval(scrollNext, 3000); }};
+                        if (img.complete) loadImage();
                     });
                 }
-                
-                // Pequeño retraso para asegurar que clientHeight esté disponible
                 setTimeout(preloadImagesAndStart, 100);
             }
 
-             // === CÓDIGO DE WHATSAPP FLOTANTE ELIMINADO ===
-             
-            // === CÓDIGO DEL ACORDEÓN FAQ ELIMINADO ===
-            
+            // === CÓDIGO PIXEL ===
+            if (typeof fbq === 'function') {
+                const trackClick = (id, eventName) => {
+                    const btn = document.getElementById(id);
+                    if (btn) btn.addEventListener('click', () => {
+                        fbq('track', 'Contact', { content_name: eventName });
+                        console.log(`Pixel Event: Contact (${eventName})`);
+                    });
+                };
+
+                trackClick('hero-cta-button', 'Hero CTA');
+                trackClick('custom-package-cta', 'Custom Pkg CTA');
+                trackClick('memoria-cta-button', 'Memoria CTA');
+                trackClick('proceso-cta-button', 'Proceso CTA');
+                trackClick('faq-cta-button', 'FAQ CTA');
+            }
         });
     </script>
-
-    <!-- HTML DEL WIDGET DE WHATSAPP ELIMINADO --></body>
+</body>
 </html>
+
 
 
 
