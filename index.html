@@ -175,20 +175,23 @@
                 <div class="absolute inset-0 bg-black/50"></div>
             </div>
             
-            <div class="relative z-10 p-4 pt-24 pb-4">
-                <p style="font-weight: 300;" class="text-3xl md:text-4xl">PAQUETE</p>
-                <h1 style="font-weight: 300;" class="text-6xl md:text-8xl">PREMIER</h1>
-                <!-- CORREGIDO: Eliminado el 52 extra en el teléfono -->
-                <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="hero-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
-                    RESERVAR MI FECHA
+            <div class="relative z-10 p-4 pt-24 pb-4 flex flex-col items-center">
+                <!-- TÍTULO PRINCIPAL CAMBIADO Y DIVIDIDO -->
+                <h1 style="font-weight: 300;" class="text-5xl md:text-7xl tracking-widest uppercase mb-8 text-center leading-tight">
+                    FINITE<br>
+                    ESTUDIO
+                </h1>
+                
+                <!-- BOTÓN VER MÁS (Scroll Down) -->
+                <a href="#memoria-section" id="hero-cta-button" class="nav-button inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
+                    VER MÁS
                 </a>
             </div>
         </section>
 
-        <!-- Sección "La memoria puede fallar" --><section class="bg-brand-white py-24 px-4">
+        <!-- Sección "La memoria puede fallar" (Con ID añadido para el scroll) --><section id="memoria-section" class="bg-brand-white py-24 px-4">
             <div class="max-w-4xl mx-auto text-center">
                 <p class="description-font text-xl text-center text-gray-700 mb-12">La memoria puede fallar. Pero tus fotos... ellas te devuelven cada risa, cada mirada, cada piel chinita. La promesa es que revivas el día de tu boda, sin que se escape nada.</p>
-                <!-- CORREGIDO: Eliminado el 52 extra en el teléfono -->
                 <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="memoria-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                     RESERVAR MI FECHA
                 </a>
@@ -213,13 +216,13 @@
                         <div id="btn-srv-video" class="switch-option service-option" onclick="selectService('video')">FOTOGRAFÍA + VIDEO</div>
                     </div>
 
-                    <!-- 2. SELECTOR DE NIVEL (TIER) - MOVIDO ABAJO Y ESTILIZADO IGUAL -->
+                    <!-- 2. SELECTOR DE NIVEL (TIER) - ORDEN CAMBIADO: Exclusivo -> Plus -> Esencial -->
                     <!-- Bloque para asegurar que salte de línea -->
                     <div class="w-full"></div> 
                     <div class="custom-switch mb-8">
-                        <div class="switch-option tier-option" onclick="selectTier('esencial')" id="btn-tier-esencial">ESENCIAL</div>
-                        <div class="switch-option tier-option" onclick="selectTier('plus')" id="btn-tier-plus">PLUS</div>
                         <div class="switch-option tier-option active" onclick="selectTier('exclusivo')" id="btn-tier-exclusivo">EXCLUSIVO</div>
+                        <div class="switch-option tier-option" onclick="selectTier('plus')" id="btn-tier-plus">PLUS</div>
+                        <div class="switch-option tier-option" onclick="selectTier('esencial')" id="btn-tier-esencial">ESENCIAL</div>
                     </div>
 
                     <h2 class="description-font text-xl text-center md:text-left mb-6">Incluye:</h2>
@@ -245,11 +248,11 @@
                             <!-- Items Fijos -->
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Preview express
+                                Preview express (30 fotos 3 días después de la boda)
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                500 a 600 fotografías digitales
+                                <span id="dynamic-photos">500 a 600</span>&nbsp;fotografías digitales
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -257,23 +260,43 @@
                             </li>
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Album digital
+                                Álbum digital
                             </li>
+                            
                             <!-- Items de Video (Solo video) -->
-                            <li class="flex items-center video-item hidden-item">
+                            
+                            <!-- Reel 45s (Solo Esencial) -->
+                            <li class="flex items-center video-item hidden-item" id="item-reel-45s" style="display: none;">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Reel de 45 segundos
+                            </li>
+
+                            <!-- Short video 2min (Plus y Exclusivo) -->
+                            <li class="flex items-center video-item hidden-item" id="item-short-2min">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Short video de 2 minutos
                             </li>
+
                             <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Full video de 35 - 40 minutos
+                                Full video de <span id="dynamic-video-duration" class="mx-1">35 - 40</span> minutos
+                            </li>
+
+                            <!-- Item exclusivo del Plus (Social Media) -->
+                            <li class="flex items-center video-item hidden-item" id="item-social-clips" style="display: none;">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                3 clips en formato vertical (social media)
+                            </li>
+                            <!-- Item exclusivo del Exclusivo (Cámara Vlog) -->
+                            <li class="flex items-center video-item hidden-item" id="item-vlog-cam" style="display: none;">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Cámara vlog
                             </li>
                         </ul>
                         
                         <!-- Precio y CTA -->
                         <div class="mt-10 flex flex-col md:flex-row items-center md:justify-start space-y-4 md:space-y-0 md:space-x-8">
                             <p id="dynamic-price" class="description-font text-3xl md:text-4xl transition-all duration-300">$25,000 MXN</p>
-                            <!-- CORREGIDO: Eliminado el 52 extra en el teléfono -->
                             <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" class="nav-button bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                                 RESERVAR MI FECHA
                             </a>
@@ -291,31 +314,31 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-10 description-font text-xl text-gray-700 text-center">
                     <div>
                         <span>Sesión "Save the Date"</span>
-                        <p class="font-bold text-brand-black">$3,650</p>
+                        <p class="font-bold text-brand-black">$3,650 MXN</p>
                     </div>
                     <div>
                         <span>Álbum Impreso</span>
-                        <p class="font-bold text-brand-black">$3,290</p>
+                        <p class="font-bold text-brand-black">$3,290 MXN</p>
                     </div>
                     <div>
                         <span>Preview Express (entrega rápida)</span>
-                        <p class="font-bold text-brand-black">$1,650</p>
+                        <p class="font-bold text-brand-black">$1,650 MXN</p>
                     </div>
                     <div>
                         <span>Álbum Digital</span>
-                        <p class="font-bold text-brand-black">$1,650</p>
+                        <p class="font-bold text-brand-black">$1,650 MXN</p>
                     </div>
                     <div>
                         <span>Maquillaje y Peinado</span>
-                        <p class="font-bold text-brand-black">$2,750</p>
+                        <p class="font-bold text-brand-black">$2,750 MXN</p>
                     </div>
                     <div>
-                        <span>Videógrafo</span>
-                        <p class="font-bold text-brand-black">A cotizar</p>
+                        <span>Hora extra</span>
+                        <p class="font-bold text-brand-black">$1,500 MXN</p>
                     </div>
                     <div>
                         <span>Segundo Fotógrafo</span>
-                        <p class="font-bold text-brand-black">$3,750</p>
+                        <p class="font-bold text-brand-black">$3,750 MXN</p>
                     </div>
                 </div>
             </div>
@@ -353,7 +376,7 @@
                         <span class="text-6xl font-bold text-brand-brown description-font">01</span>
                         <h3 class="text-2xl font-bold mt-4 mb-3">Contáctanos</h3>
                         <p class="description-font text-gray-700 leading-relaxed">
-                            Escríbenos, ya sea por Instagram o WhatsApp. Revisaremos disponibilidad de tu fecha en nuestra agenda.
+                            Escríbenos por WhatsApp. Revisaremos disponibilidad de tu fecha en nuestra agenda.
                         </p>
                     </div>
                     <!-- Paso 2 --><div>
@@ -367,19 +390,18 @@
                         <span class="text-6xl font-bold text-brand-brown description-font">03</span>
                         <h3 class="text-2xl font-bold mt-4 mb-3">Sesión/Boda</h3>
                         <p class="description-font text-gray-700 leading-relaxed">
-                            Organizamos tu sesión Save The Date, definimos fecha, locación, logística y la llevaremos a cabo. Tendremos otra reunión para planear nuestra logística del gran día y llegado el tan esperado día ustedes se encargan de vivirlo y nosotros de documentarlo.
+                            Tendremos una reunión de planeación una semana antes de la boda. Y llegado el tan esperado día, ustedes se encargan de vivirlo y nosotros de documentarlo.
                         </p>
                     </div>
                     <!-- Paso 4 --><div>
                         <span class="text-6xl font-bold text-brand-brown description-font">04</span>
                         <h3 class="text-2xl font-bold mt-4 mb-3">Entrega</h3>
                         <p class="description-font text-gray-700 leading-relaxed">
-                            Una vez que hayamos vivido el gran día, nos tomará entre 20 a 25 días hábiles entregar su material. Les enviaremos enlaces de descarga para su material digital.
+                            Una vez que hayamos vivido el gran día, nos tomará entre 30 a 35 días hábiles entregar su material. Les enviaremos enlaces de descarga para su material digital.
                         </p>
                     </div>
                 </div>
                 <div class="text-center mt-16">
-                    <!-- CORREGIDO: Eliminado el 52 extra en el teléfono -->
                     <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="proceso-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
@@ -419,7 +441,7 @@
                         </div>
                         <div class="md:col-span-2">
                             <p class="description-font text-gray-700 leading-relaxed">
-                                El tiempo de entrega de tus fotos es de 20 a 25 días hábiles.
+                                El tiempo de entrega de tus fotos es de 30 a 35 días hábiles.
                             </p>
                         </div>
                     </div>
@@ -436,7 +458,6 @@
                     </div>
                 </div>
                 <div class="text-center mt-16">
-                    <!-- CORREGIDO: Eliminado el 52 extra en el teléfono -->
                     <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="faq-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
                         RESERVAR MI FECHA
                     </a>
@@ -457,25 +478,39 @@
 
     <script>
         // Configuración de Precios y Datos de los Paquetes
-        // Precios actualizados con terminación 990
         const packages = {
             esencial: {
-                hours: 8,
+                hours: 6,
                 title: 'Esencial',
                 pricePhoto: 19990,
-                priceVideo: 34490 
+                priceVideo: 32490, // 19,990 + 12,500
+                photos: '300 a 400',
+                videoDuration: '15 - 20',
+                hasSocialClips: false,
+                hasVlogCam: false,
+                shortVideoType: 'reel' // Nueva propiedad
             },
             plus: {
                 hours: 10,
                 title: 'Plus',
                 pricePhoto: 22490,
-                priceVideo: 36990 
+                priceVideo: 37990, 
+                photos: '500 a 600',
+                videoDuration: '30 - 40',
+                hasSocialClips: true,
+                hasVlogCam: false,
+                shortVideoType: 'short'
             },
             exclusivo: {
                 hours: 12,
                 title: 'Exclusivo',
                 pricePhoto: 24990,
-                priceVideo: 39490
+                priceVideo: 44640, 
+                photos: '500 a 600',
+                videoDuration: '50 - 60',
+                hasSocialClips: false,
+                hasVlogCam: true,
+                shortVideoType: 'short'
             }
         };
 
@@ -491,10 +526,11 @@
         function updateDisplay() {
             const pkg = packages[currentTier];
             
-            // Actualizar horas en la lista
+            // Actualizar horas y fotos en la lista
             document.getElementById('dynamic-hours').textContent = pkg.hours;
+            document.getElementById('dynamic-photos').textContent = pkg.photos;
             
-            // Actualizar botones de Tier (ahora comparten clase visual con los de servicio pero con ID específico)
+            // Actualizar botones de Tier
             document.querySelectorAll('.tier-option').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-tier-${currentTier}`).classList.add('active');
             
@@ -506,19 +542,67 @@
             const price = currentService === 'photo' ? pkg.pricePhoto : pkg.priceVideo;
             document.getElementById('dynamic-price').textContent = formatMoney(price);
 
+            // Actualizar Duración de Video
+            document.getElementById('dynamic-video-duration').textContent = pkg.videoDuration;
+
             // Mostrar/Ocultar elementos de video
             const videoItems = document.querySelectorAll('.video-item');
+            const socialClipsItem = document.getElementById('item-social-clips');
+            const vlogCamItem = document.getElementById('item-vlog-cam');
+            const shortVideoItem = document.getElementById('item-short-2min');
+            const reelVideoItem = document.getElementById('item-reel-45s');
+
             if (currentService === 'video') {
+                // Mostrar items generales de video
                 videoItems.forEach(item => {
-                    item.classList.remove('hidden-item');
-                    item.style.display = 'flex'; // Asegurar display flex para alineación
+                    // Filtrar items especiales
+                    if (item.id !== 'item-social-clips' && 
+                        item.id !== 'item-vlog-cam' && 
+                        item.id !== 'item-short-2min' && 
+                        item.id !== 'item-reel-45s') {
+                        item.classList.remove('hidden-item');
+                        item.style.display = 'flex';
+                    }
                 });
+
+                // Lógica Short Video vs Reel
+                if (pkg.shortVideoType === 'reel') {
+                    reelVideoItem.classList.remove('hidden-item');
+                    reelVideoItem.style.display = 'flex';
+                    shortVideoItem.classList.add('hidden-item');
+                    shortVideoItem.style.display = 'none';
+                } else {
+                    shortVideoItem.classList.remove('hidden-item');
+                    shortVideoItem.style.display = 'flex';
+                    reelVideoItem.classList.add('hidden-item');
+                    reelVideoItem.style.display = 'none';
+                }
+
+                // Lógica específica para Social Clips (Solo Plus)
+                if (pkg.hasSocialClips) {
+                    socialClipsItem.classList.remove('hidden-item');
+                    socialClipsItem.style.display = 'flex';
+                } else {
+                    socialClipsItem.classList.add('hidden-item');
+                    socialClipsItem.style.display = 'none';
+                }
+
+                // Lógica específica para Vlog Cam (Solo Exclusivo)
+                if (pkg.hasVlogCam) {
+                    vlogCamItem.classList.remove('hidden-item');
+                    vlogCamItem.style.display = 'flex';
+                } else {
+                    vlogCamItem.classList.add('hidden-item');
+                    vlogCamItem.style.display = 'none';
+                }
+
             } else {
+                // Ocultar todo si es solo foto
                 videoItems.forEach(item => {
                     item.classList.add('hidden-item');
                     setTimeout(() => {
                          if(item.classList.contains('hidden-item')) item.style.display = 'none';
-                    }, 300); // Esperar a la transición
+                    }, 300);
                 });
             }
         }
@@ -617,7 +701,19 @@
                     });
                 };
 
-                trackClick('hero-cta-button', 'Hero CTA');
+                // Actualizado: Corrección del comportamiento del botón
+                const heroBtn = document.getElementById('hero-cta-button');
+                if (heroBtn) {
+                    heroBtn.addEventListener('click', (e) => {
+                        e.preventDefault(); // Previene el comportamiento por defecto (salto)
+                        const target = document.getElementById('memoria-section');
+                        if (target) {
+                            target.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        fbq('track', 'ViewContent', { content_name: 'Hero Scroll Down' });
+                    });
+                }
+
                 trackClick('custom-package-cta', 'Custom Pkg CTA');
                 trackClick('memoria-cta-button', 'Memoria CTA');
                 trackClick('proceso-cta-button', 'Proceso CTA');
