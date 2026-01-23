@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- OPTIMIZACIÓN SEO: TÍTULO -->
-    <title> Finite Estudio | Fotógrafo de Bodas en Tijuana </title>
+    <title>Fotógrafo de Bodas en Tijuana | Finite Estudio - Paquetes Personalizados</title>
     
     <!-- OPTIMIZACIÓN SEO: META DESCRIPCIÓN Y KEYWORDS -->
     <meta name="description" content="Saúl Díaz, fotógrafo de bodas en Tijuana y Baja California. Capturamos tu historia con fotografía nupcial documental y paquetes personalizados que se adaptan a ti.">
@@ -176,6 +176,14 @@
             text-align: center;
         }
 
+        /* Estilo para opción deshabilitada */
+        .switch-option.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            background-color: #d1d1d1;
+            color: #888;
+        }
+
         /* Ajuste para móviles en los botones de nivel si es necesario */
         @media (max-width: 400px) {
             .switch-option {
@@ -190,7 +198,7 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
-        .switch-option:hover:not(.active) {
+        .switch-option:hover:not(.active):not(.disabled) {
             color: #2b2b2b;
             background-color: rgba(0,0,0,0.05);
         }
@@ -266,15 +274,7 @@
                     <!-- Subtítulo Fijo -->
                     <p class="description-font text-lg text-gray-400 mb-8 italic">Diseñado para que revivas tu boda de principio a fin</p>
                     
-                    <!-- 1. SELECTOR DE SERVICIO (FOTO / VIDEO) - MOVIDO ARRIBA -->
-                    <div class="custom-switch mb-4">
-                        <div id="btn-srv-photo" class="switch-option service-option active" onclick="selectService('photo')">FOTOGRAFÍA</div>
-                        <div id="btn-srv-video" class="switch-option service-option" onclick="selectService('video')">FOTOGRAFÍA + VIDEO</div>
-                    </div>
-
-                    <!-- 2. SELECTOR DE NIVEL (TIER) - ORDEN CAMBIADO: Exclusivo -> Plus -> Esencial -->
-                    <!-- Bloque para asegurar que salte de línea -->
-                    <div class="w-full"></div> 
+                    <!-- SELECTOR DE NIVEL (TIER) - ÚNICO SELECTOR -->
                     <div class="custom-switch mb-8">
                         <div class="switch-option tier-option active" onclick="selectTier('exclusivo')" id="btn-tier-exclusivo">EXCLUSIVO</div>
                         <div class="switch-option tier-option" onclick="selectTier('plus')" id="btn-tier-plus">PLUS</div>
@@ -291,7 +291,7 @@
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Un fotógrafo especialista en bodas
                             </li>
-                            <!-- Videógrafo (Solo video) -->
+                            <!-- Videógrafo (Solo en Exclusivo) -->
                             <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Un videógrafo especialista en bodas
@@ -319,32 +319,21 @@
                                 Álbum digital
                             </li>
                             
-                            <!-- Items de Video (Solo video) -->
+                            <!-- Items de Video (Solo Exclusivo) -->
                             
-                            <!-- Reel 45s (Solo Esencial) -->
-                            <li class="flex items-center video-item hidden-item" id="item-reel-45s" style="display: none;">
-                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Reel de 45 segundos
-                            </li>
-
-                            <!-- Short video 2min (Plus y Exclusivo) -->
-                            <li class="flex items-center video-item hidden-item" id="item-short-2min">
+                            <!-- Short video 2min -->
+                            <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Short video de 2 minutos
                             </li>
 
                             <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Full video de <span id="dynamic-video-duration" class="mx-1">35 - 40</span> minutos
+                                Full video de 50 - 60 minutos
                             </li>
 
-                            <!-- Item exclusivo del Plus (Social Media) -->
-                            <li class="flex items-center video-item hidden-item" id="item-social-clips" style="display: none;">
-                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                3 clips en formato vertical (social media)
-                            </li>
-                            <!-- Item exclusivo del Exclusivo (Cámara Vlog) -->
-                            <li class="flex items-center video-item hidden-item" id="item-vlog-cam" style="display: none;">
+                            <!-- Cámara Vlog -->
+                            <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Cámara vlog
                             </li>
@@ -362,8 +351,6 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE BENEFICIOS (BANNER ANTERIOR ELIMINADO) -->
-
         <!-- NUEVA SECCIÓN DE EXTRAS (FONDO CLARO) --><section class="bg-brand-white text-brand-black py-24 px-4">
             <div class="max-w-4xl mx-auto px-4">
                 <div class="text-center mb-16">
@@ -380,13 +367,12 @@
                         <span>Pack 50 fotos impresas</span>
                         <p class="font-bold text-brand-black">$2,500 MXN</p>
                     </div>
-                    <!-- Eliminado: Preview Express y Álbum Digital -->
                     <div>
                         <span>Maquillaje y Peinado</span>
                         <p class="font-bold text-brand-black">$2,750 MXN</p>
                     </div>
                     <div>
-                        <span>Hora extra</span>
+                        <span>Hora Extra</span>
                         <p class="font-bold text-brand-black">$1,500 MXN</p>
                     </div>
                     <div>
@@ -455,7 +441,7 @@
                         <span class="text-6xl font-bold text-brand-brown description-font">02</span>
                         <h3 class="text-2xl font-bold mt-4 mb-3">Cita/Contrato</h3>
                         <p class="description-font text-gray-700 leading-relaxed">
-                            Agendamos una cita, ya sea por videollamada o en algún cafecito nos conocemos, me platican acerca de su boda y si todo hace sentido y están seguros que soy su fotógrafo ideal procedemos a firmar contrato y bloquear su fecha en nuestra agenda.
+                            Agendamos una cita, nos conocemos, me platican acerca de su boda y si todo hace sentido y están seguros que soy su fotógrafo ideal procedemos a firmar contrato y bloquear su fecha en nuestra agenda.
                         </p>
                     </div>
                     <!-- Paso 3 --><div>
@@ -498,7 +484,7 @@
                 <div class="space-y-12">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
                         <div class="md:col-span-1">
-                            <h3 class="text-xl md:text-2xl font-bold">¿Dónde te encuentras ubicado?</h3>
+                            <h3 class="text-xl md:text-2xl font-bold">¿Dónde estás ubicado?</h3>
                         </div>
                         <div class="md:col-span-2">
                             <p class="description-font text-gray-700 leading-relaxed">
@@ -528,6 +514,41 @@
                             </p>
                         </div>
                     </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                        <div class="md:col-span-1">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Haces bodas destino?</h3>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="description-font text-gray-700 leading-relaxed">
+                                ¡Claro que sí! Si el amor viaja, yo también.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Nueva Pregunta: Contrato -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                        <div class="md:col-span-1">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Se firma contrato?</h3>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="description-font text-gray-700 leading-relaxed">
+                                Claro que sí. Para seguridad y tranquilidad de ambos, firmamos un contrato donde se detallan todos los términos y condiciones.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Nueva Pregunta: Cita -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 border-b border-gray-200 pb-8">
+                        <div class="md:col-span-1">
+                            <h3 class="text-xl md:text-2xl font-bold">¿Dónde sería la cita?</h3>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="description-font text-gray-700 leading-relaxed">
+                                Lo ideal es vernos en persona en algún cafecito. O si prefieren nos vemos por videollamada.
+                            </p>
+                        </div>
+                    </div>
                 </div>
                 <div class="text-center mt-16">
                     <a href="https://api.whatsapp.com/send?phone=+526643372791&text=Hola%20Saul%2C%20me%20interesa%20el%20paquete%20premier%20para%20mi%20boda%20%F0%9F%93%B8" target="_blank" id="faq-cta-button" class="nav-button mt-10 inline-block bg-brand-brown text-white font-bold tracking-widest rounded-md hover:opacity-90 transition-opacity duration-300 text-center whitespace-nowrap description-font" style="padding: 16px 32px; font-size: 16px;">
@@ -554,40 +575,28 @@
             esencial: {
                 hours: 6,
                 title: 'Esencial',
-                pricePhoto: 20000, // Era 19990
-                priceVideo: 32500, // Era 32490
+                price: 20000, 
                 photos: '300 a 400',
-                videoDuration: '15 - 20',
-                hasSocialClips: false,
-                hasVlogCam: false,
-                shortVideoType: 'reel'
+                hasVideo: false // Solo Foto
             },
             plus: {
                 hours: 10,
                 title: 'Plus',
-                pricePhoto: 22500, // Era 22490
-                priceVideo: 38000, // Era 37990
+                price: 22500, 
                 photos: '500 a 600',
-                videoDuration: '30 - 40',
-                hasSocialClips: true,
-                hasVlogCam: false,
-                shortVideoType: 'short'
+                hasVideo: false // Solo Foto
             },
             exclusivo: {
                 hours: 12,
                 title: 'Exclusivo',
-                pricePhoto: 25000, // Era 24990
-                priceVideo: 44650, // 25000 + 19650
+                price: 44650, // 25000 + 19650
                 photos: '500 a 600',
-                videoDuration: '50 - 60',
-                hasSocialClips: false,
-                hasVlogCam: true,
-                shortVideoType: 'short'
+                hasVideo: true // Incluye Video
             }
         };
 
+        // INICIALIZACIÓN: Comenzamos en Exclusivo
         let currentTier = 'exclusivo';
-        let currentService = 'photo';
 
         // Función para formatear dinero
         const formatMoney = (amount) => {
@@ -606,70 +615,20 @@
             document.querySelectorAll('.tier-option').forEach(btn => btn.classList.remove('active'));
             document.getElementById(`btn-tier-${currentTier}`).classList.add('active');
             
-            // Actualizar botones de Servicio
-            document.querySelectorAll('.service-option').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(`btn-srv-${currentService}`).classList.add('active');
-
             // Actualizar Precio
-            const price = currentService === 'photo' ? pkg.pricePhoto : pkg.priceVideo;
-            document.getElementById('dynamic-price').textContent = formatMoney(price);
-
-            // Actualizar Duración de Video
-            document.getElementById('dynamic-video-duration').textContent = pkg.videoDuration;
+            document.getElementById('dynamic-price').textContent = formatMoney(pkg.price);
 
             // Mostrar/Ocultar elementos de video
             const videoItems = document.querySelectorAll('.video-item');
-            const socialClipsItem = document.getElementById('item-social-clips');
-            const vlogCamItem = document.getElementById('item-vlog-cam');
-            const shortVideoItem = document.getElementById('item-short-2min');
-            const reelVideoItem = document.getElementById('item-reel-45s');
 
-            if (currentService === 'video') {
-                // Mostrar items generales de video
+            if (pkg.hasVideo) {
+                // Mostrar items de video SOLO si el paquete incluye video (Exclusivo)
                 videoItems.forEach(item => {
-                    // Filtrar items especiales
-                    if (item.id !== 'item-social-clips' && 
-                        item.id !== 'item-vlog-cam' && 
-                        item.id !== 'item-short-2min' && 
-                        item.id !== 'item-reel-45s') {
-                        item.classList.remove('hidden-item');
-                        item.style.display = 'flex';
-                    }
+                    item.classList.remove('hidden-item');
+                    item.style.display = 'flex';
                 });
-
-                // Lógica Short Video vs Reel
-                if (pkg.shortVideoType === 'reel') {
-                    reelVideoItem.classList.remove('hidden-item');
-                    reelVideoItem.style.display = 'flex';
-                    shortVideoItem.classList.add('hidden-item');
-                    shortVideoItem.style.display = 'none';
-                } else {
-                    shortVideoItem.classList.remove('hidden-item');
-                    shortVideoItem.style.display = 'flex';
-                    reelVideoItem.classList.add('hidden-item');
-                    reelVideoItem.style.display = 'none';
-                }
-
-                // Lógica específica para Social Clips (Solo Plus)
-                if (pkg.hasSocialClips) {
-                    socialClipsItem.classList.remove('hidden-item');
-                    socialClipsItem.style.display = 'flex';
-                } else {
-                    socialClipsItem.classList.add('hidden-item');
-                    socialClipsItem.style.display = 'none';
-                }
-
-                // Lógica específica para Vlog Cam (Solo Exclusivo)
-                if (pkg.hasVlogCam) {
-                    vlogCamItem.classList.remove('hidden-item');
-                    vlogCamItem.style.display = 'flex';
-                } else {
-                    vlogCamItem.classList.add('hidden-item');
-                    vlogCamItem.style.display = 'none';
-                }
-
             } else {
-                // Ocultar todo si es solo foto
+                // Ocultar items de video para paquetes de solo foto (Esencial y Plus)
                 videoItems.forEach(item => {
                     item.classList.add('hidden-item');
                     setTimeout(() => {
@@ -682,11 +641,6 @@
         // Funciones expuestas al HTML
         window.selectTier = function(tier) {
             currentTier = tier;
-            updateDisplay();
-        };
-
-        window.selectService = function(service) {
-            currentService = service;
             updateDisplay();
         };
 
@@ -795,6 +749,7 @@
     </script>
 </body>
 </html>
+
 
 
 
