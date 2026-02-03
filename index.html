@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- OPTIMIZACIÓN SEO: TÍTULO -->
-    <title> Finite Estudio | Fotógrafo de Bodas en Tijuana </title>
+    <title>Finite Estudio | Fotógrafo de Bodas en Tijuana</title>
     
     <!-- OPTIMIZACIÓN SEO: META DESCRIPCIÓN Y KEYWORDS -->
     <meta name="description" content="Saúl Díaz, fotógrafo de bodas en Tijuana y Baja California. Capturamos tu historia con fotografía nupcial documental y paquetes personalizados que se adaptan a ti.">
@@ -291,6 +291,11 @@
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Un fotógrafo especialista en bodas
                             </li>
+                            <!-- Segundo Fotógrafo (Solo en Plus) -->
+                            <li class="flex items-center video-item hidden-item" id="item-second-shooter" style="display: none;">
+                                <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                                Segundo fotógrafo
+                            </li>
                             <!-- Videógrafo (Solo en Exclusivo) -->
                             <li class="flex items-center video-item hidden-item">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
@@ -314,9 +319,10 @@
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                                 Galería Online
                             </li>
+                            <!-- Reemplazado Álbum Digital por Pack 50 fotos -->
                             <li class="flex items-center">
                                 <svg class="w-6 h-6 text-brand-brown mr-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                Álbum digital
+                                Pack 50 fotos impresas
                             </li>
                             
                             <!-- Items de Video (Solo Exclusivo) -->
@@ -363,9 +369,10 @@
                         <span>Sesión "Save the Date"</span>
                         <p class="font-bold text-brand-black">$3,650 MXN</p>
                     </div>
+                    <!-- Reemplazado Pack por Álbum Digital -->
                     <div>
-                        <span>Pack 50 fotos impresas</span>
-                        <p class="font-bold text-brand-black">$2,500 MXN</p>
+                        <span>Álbum Digital</span>
+                        <p class="font-bold text-brand-black">$1,650 MXN</p>
                     </div>
                     <div>
                         <span>Maquillaje y Peinado</span>
@@ -577,21 +584,24 @@
                 title: 'Esencial',
                 price: 20000, 
                 photos: '300 a 400',
-                hasVideo: false // Solo Foto
+                hasVideo: false, // Solo Foto
+                secondShooter: false
             },
             plus: {
                 hours: 10,
                 title: 'Plus',
-                price: 22500, 
+                price: 26500, // Ajustado con segundo fotógrafo
                 photos: '500 a 600',
-                hasVideo: false // Solo Foto
+                hasVideo: false, // Solo Foto
+                secondShooter: true
             },
             exclusivo: {
                 hours: 12,
                 title: 'Exclusivo',
                 price: 44650, // 25000 + 19650
                 photos: '500 a 600',
-                hasVideo: true // Incluye Video
+                hasVideo: true, // Incluye Video
+                secondShooter: false // Mantenemos false por defecto si no se especificó lo contrario para Exclusivo
             }
         };
 
@@ -620,20 +630,38 @@
 
             // Mostrar/Ocultar elementos de video
             const videoItems = document.querySelectorAll('.video-item');
+            
+            // Lógica para el segundo fotógrafo
+            const secondShooterItem = document.getElementById('item-second-shooter');
+            if (pkg.secondShooter) {
+                secondShooterItem.classList.remove('hidden-item');
+                secondShooterItem.style.display = 'flex';
+            } else {
+                secondShooterItem.classList.add('hidden-item');
+                setTimeout(() => {
+                        if(secondShooterItem.classList.contains('hidden-item')) secondShooterItem.style.display = 'none';
+                }, 300);
+            }
 
             if (pkg.hasVideo) {
                 // Mostrar items de video SOLO si el paquete incluye video (Exclusivo)
                 videoItems.forEach(item => {
-                    item.classList.remove('hidden-item');
-                    item.style.display = 'flex';
+                    // Evitar mostrar el item de segundo fotógrafo aquí si no corresponde (ya se manejó arriba)
+                    if (item.id !== 'item-second-shooter') {
+                        item.classList.remove('hidden-item');
+                        item.style.display = 'flex';
+                    }
                 });
             } else {
                 // Ocultar items de video para paquetes de solo foto (Esencial y Plus)
                 videoItems.forEach(item => {
-                    item.classList.add('hidden-item');
-                    setTimeout(() => {
-                         if(item.classList.contains('hidden-item')) item.style.display = 'none';
-                    }, 300);
+                    // No ocultar el segundo fotógrafo si el paquete lo incluye (Plus)
+                    if (item.id !== 'item-second-shooter') {
+                        item.classList.add('hidden-item');
+                        setTimeout(() => {
+                             if(item.classList.contains('hidden-item')) item.style.display = 'none';
+                        }, 300);
+                    }
                 });
             }
         }
@@ -749,15 +777,6 @@
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
 
 
 
